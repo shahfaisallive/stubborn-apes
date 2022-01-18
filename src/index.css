@@ -1,13 +1,342 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body{
+  background-color: black;
+  /* font-family: "Montserrat", sans-serif; */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* GLOBAL CSS */
+/* GLOBAL CSS */
+/* GLOBAL CSS */
+.text_one{
+  color: white;
+  font-size: 16px;
+}
+.button1{
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  font-weight: 500;
+  font-size: 17px;
+  background: rgba(255, 255, 255, 0.25);
+}
+.button2{
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  font-size: 17px;
+  font-weight: 500;
+  color: white;
+  background-color:#54A522;
+}
+.basic-text1{
+  font-size: 16px;
+  color: white;
+}
+.basic-text2{
+  font-size: 14px;
+  color: #DEDEDE;
+}
+.heading1{
+  font-size: 30px;
+  color: #54A522;
+}
+.heading2{
+  font-size: 20px;
+  font-weight: 500;
+  color: #54A522;
+}
+
+
+/* NAVBAR STYLES */
+/* NAVBAR STYLES */
+/* NAVBAR STYLES */
+.navbar-wrap{
+  background-color: transparent;
+  transition: background 2s;
+  transition: font-size 1s;
+}
+
+.scrollNavBar{
+  background: rgba(5, 5, 5, 0.7); 
+  transition: background-color 3s;
+  transition: background 2s;
+  transition: font-size 1s;
+}
+
+.logo-img{
+  width: 135px;
+  transition: width 1s;
+}
+#scrollNavLogo{
+  width: 70px;
+  transition: width 1s;
+}
+
+.toggle-btn{
+  background-color: #54A522 ;
+}
+
+.nav-social-icon{
+  width: 20px;
+}
+.nav-social-icon:hover{
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.nav-social-container{
+  margin-left: 200px;
+}
+.nav-link{
+  margin-right: 15px;
+}
+.nav-link:hover{
+  cursor: pointer;
+}
+
+.nav-link p:hover{
+  color: #54A522;
+}
+
+.activeLink{
+  color: #54A522;
+}
+
+
+/* HEADER STYLE */
+/* HEADER STYLE */
+/* HEADER STYLE */
+.header-wrapper{
+  height:auto;
+  width: auto;
+  padding-top:15%;
+  padding-bottom: 10%;
+}
+
+.header-text1{
+  color: white;
+  font-size: 20px;
+}
+.header-text2{
+  color: white;
+  font-size: 18px;
+}
+.header-title{
+  color: #54A522;
+  font-size: 50px;
+}
+.timer-div{
+  font-size: 80px;
+  color: white;
+}
+.timer-div-text{
+  font-size: 20px;
+  color: white;
+}
+
+
+/* ABOUT US STYLES */
+/* ABOUT US STYLES */
+/* ABOUT US STYLES */
+.aboutus-wrapper{
+  padding-bottom: 70px;
+}
+.aboutus-left{
+  padding-top: 150px;
+  padding-bottom: 150px;
+
+}
+
+.aboutus-apes{
+  width: 93%;
+  margin-left: 20px;
+}
+
+.about-stats-div{
+  background: rgba(36, 34, 34, 0.7); 
+  border-radius: 15px;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.traits-icons{
+  width: 40px;
+  margin-left: auto;
+  margin-right: auto;  
+  display: block;
+}
+.traits-text1{
+  font-size: 35px;
+  font-weight: 600;
+  color: white;
+}
+.traits-text2{
+  font-size: 14px;
+  color: #989898;
+}
+.trait-ether-icon{
+  width: 15px;
+  margin-left: 8px;
+  margin-top: -8px;
+}
+
+/* SPECS STYLES */
+/* SPECS STYLES */
+/* SPECS STYLES */
+.specs-wrapper{
+  background-color: #111111;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+.specs-right{
+  padding-top: 30px;
+}
+.specs-img-ape{
+  width: 80%;
+}
+.arrow-icon{
+  width: 15px;
+  margin-right: 20px;
+}
+.roadmap-wrapper{
+  background-color: #111111;
+  padding-bottom: 70px;
+  padding-top: 70px;
+}
+
+/* ROADMAp STYLES */
+/* ROADMAp STYLES */
+/* ROADMAp STYLES */
+.roadmap-title-div{
+  margin-right: 20%;
+  margin-left: 20%;
+}
+
+.rm-left{
+
+}
+.rm-right{
+
+}
+.rm-mid{
+  align-content: center;
+}
+
+.circle-icon{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.line-icon{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.roadmap-single-div{
+  border: 1px solid rgb(145, 137, 137);
+  border-radius: 10px;
+  padding: 15px;
+}
+
+#rm1{
+  margin-top: 0px;
+}
+#rm2{
+  margin-top: 270px;
+}
+#rm3{
+  margin-top: 300px;
+}
+#rm4{
+  margin-top: 300px;
+}
+#rm5{
+  margin-top: 350px;
+}
+#rm6{
+  margin-top: 380px;
+}
+
+
+/* FAQS STYLES */
+/* FAQS STYLES */
+/* FAQS STYLES */
+.faqs-wrapper{
+  background-color: black;
+  padding-top: 70px;
+  padding-bottom: 60px;
+}
+
+.faq-single-div{
+  border: 1px solid rgb(180, 176, 176);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.faq-text1{
+  font-size: 18px;
+  color: white;
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  margin: auto;
+  text-align: left;
+  padding-right: 40px;
+}
+
+.drop-icon{
+  width: 20px;
+  position: absolute;
+  right: 40px;
+  margin-top: 2px;
+}
+.faq-text2{
+  font-size: 14px;
+  color: #A4A4A4;
+  margin-top: 5px;
+  width: 100%;
+  margin: auto;
+  text-align: left;
+  margin-left: 6px;
+  padding-right: 10px;
+}
+
+/* FOOTER STYLES */
+/* FOOTER STYLES */
+/* FOOTER STYLES */
+.footer-wrapper{
+  background-color: #111111;
+  padding-top: 60px;
+}
+.footer-logo{
+  width: 130px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ft-text1{
+  font-size: 14px;
+  color: #BCBCBC;
+}
+.ft-text2{
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+
+
+/* MEDIA QUERIES */
+/* MEDIA QUERIES */
+/* MEDIA QUERIES */
+@media only screen and (max-width: 600px){
+  .nav-social-container{
+    margin-left: 0px;
+  }
+
 }
