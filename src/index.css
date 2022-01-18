@@ -30,6 +30,32 @@ body{
   color: white;
   background-color:#54A522;
 }
+.button3{
+  padding:5px 20px 3px 20px;
+  border-radius: 10px;
+  border: 1px solid #a7a49b;
+  background-color:inherit;
+  color: white;
+  font-size: 12px;
+}
+.button4{
+  width: 200px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  font-weight: 500;
+  font-size: 17px;
+  background: rgba(33, 71, 33, 0.25);
+}
+.button3:hover{
+  padding:5px 20px 3px 20px;
+  border-radius: 10px;
+  border: 1px solid #a7a49b;
+  background-color:rgb(39, 36, 36);
+  color: white;
+  font-size: 12px;
+}
 .basic-text1{
   font-size: 16px;
   color: white;
@@ -37,6 +63,11 @@ body{
 .basic-text2{
   font-size: 14px;
   color: #DEDEDE;
+}
+.basic-text3{
+  font-size: 16px;
+  color: white;
+  font-weight: 600;
 }
 .heading1{
   font-size: 30px;
@@ -46,6 +77,10 @@ body{
   font-size: 20px;
   font-weight: 500;
   color: #54A522;
+}
+.heading3{
+  font-size: 20px;
+  color: #ffffff;
 }
 
 
@@ -328,7 +363,133 @@ body{
   color: #ffffff;
   font-weight: 600;
 }
+.ft-icon{
+  width: 20px;
+}
 
+
+
+/* MYNFTS STYLES */
+/* MYNFTS STYLES */
+/* MYNFTS STYLES */
+.mynft-wrapper
+{
+  background-color: #111111;
+  padding-top: 140px;
+  padding-bottom: 70px;
+  border-bottom: 1px solid rgb(104, 94, 94);
+}
+.mynft-text1{
+  font-size: 16px;
+  color: #B1B1B1;
+}
+.mynft-text2{
+  font-size: 16px;
+  color: white;
+  font-weight: 500;
+}
+
+.card{
+  background: transparent;
+  border: none;
+}
+.card-body{
+  padding-top: 20px !important;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.card-title{
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+}
+.ether-icon{
+  width: 13px;
+  margin-top: -2px;
+}
+.nft-price{
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+  position: absolute;
+  right: 5px;
+  margin-top: -5px;
+}
+.page-link{
+  color: #54A522;
+}
+
+/* NFT DETAILS STYLES */
+/* NFT DETAILS STYLES */
+/* NFT DETAILS STYLES */
+.details-timer-div{
+  background-color: black;
+  border-radius: 10px;
+  padding: 20px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.timer-div2{
+  font-size: 30px;
+  color: white;
+}
+.nft-name-text{
+  font-size: 32px;
+  color: white;
+  font-weight: 600;
+}
+.detail-page-icon{
+  width: 40px;
+}
+.detail-page-icon:hover{
+  cursor: pointer;
+  opacity: 0.8;
+}
+.ownerImg{
+  width: 50px;
+  border-radius: 100px;
+  margin-left: -3px;
+}
+.owner-text{
+  font-size: 18px;
+  color: white;
+  align-content: center;
+  margin-left: 15px;
+  margin-top: 10px;
+}
+.detail-price-text{
+  font-size: 25px;
+  font-weight: 600;
+  color: white;
+}
+.detail-price-text2{
+  font-size: 16px;
+  color: #707070;
+  margin-top: 7px;
+  margin-left: 10px;
+}
+.nft-price-div{
+  margin-top: -10px;
+}
+
+/* TEAM STYLES */
+/* TEAM STYLES */
+/* TEAM STYLES */
+.team-wrapper{
+  background-color: #111111;
+  padding-top: 70px;
+  padding-bottom: 50px;
+}
+.team-text1{
+  font-size: 28px;
+  margin-top: -5px;
+}
+.team-text2{
+  font-size: 16px;
+  margin-top: -10px;
+  color: #54A522;
+}
 
 
 /* MEDIA QUERIES */

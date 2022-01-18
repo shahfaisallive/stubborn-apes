@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { ReactComponent as BlueIcon } from '../media/blue.svg'
-import { ReactComponent as YellowIcon } from '../media/yellow.svg'
-import { ReactComponent as GreenIcon } from '../media/green.svg'
-import { ReactComponent as RedIcon } from '../media/red.svg'
-import { ReactComponent as EtherIcon } from '../media/ether.svg'
+import { ReactComponent as BlueIcon } from '../../media/blue.svg'
+import { ReactComponent as YellowIcon } from '../../media/yellow.svg'
+import { ReactComponent as GreenIcon } from '../../media/green.svg'
+import { ReactComponent as RedIcon } from '../../media/red.svg'
+import { ReactComponent as EtherIcon } from '../../media/ether.svg'
 
 
 

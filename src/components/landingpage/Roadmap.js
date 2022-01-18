@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { ReactComponent as CircleIcon1 } from '../media/circle1.svg'
-import { ReactComponent as CircleIcon2 } from '../media/circle2.svg'
-import { ReactComponent as CircleIcon3 } from '../media/circle3.svg'
-import { ReactComponent as CircleIcon4 } from '../media/circle4.svg'
-import { ReactComponent as CircleIcon5 } from '../media/circle5.svg'
-import { ReactComponent as CircleIcon6 } from '../media/circle6.svg'
+import { ReactComponent as CircleIcon1 } from '../../media/circle1.svg'
+import { ReactComponent as CircleIcon2 } from '../../media/circle2.svg'
+import { ReactComponent as CircleIcon3 } from '../../media/circle3.svg'
+import { ReactComponent as CircleIcon4 } from '../../media/circle4.svg'
+import { ReactComponent as CircleIcon5 } from '../../media/circle5.svg'
+import { ReactComponent as CircleIcon6 } from '../../media/circle6.svg'
 
-import { ReactComponent as Line } from '../media/line.svg'
+import { ReactComponent as Line } from '../../media/line.svg'
 
 
 const Roadmap = () => {

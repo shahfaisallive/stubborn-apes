@@ -1,5 +1,5 @@
 import React from 'react'
-import { ReactComponent as ArrowIcon } from '../media/arrow.svg'
+import { ReactComponent as ArrowIcon } from '../../media/arrow.svg'
 
 const Specs = () => {
     return (

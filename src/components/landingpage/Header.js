@@ -1,18 +1,7 @@
 import React from 'react'
-import Banner from '../media/banner.png'
-import { useTimer } from 'react-timer-hook';
+import Banner from '../../media/banner.png'
 
-const Header = () => {
-    const expiryTimestamp = new Date();
-    expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 1800000);
-
-    const {
-        seconds,
-        minutes,
-        hours,
-        days,
-    } = useTimer({ expiryTimestamp, onExpire: () => console.warn('Time expired') });
-
+const Header = ({days, hours, minutes, seconds}) => {
     return (
         <div className='container-fluid header-wrapper' id='home' style={{ backgroundImage: `url(${Banner})`, backgroundSize: '100%', backgroundRepeat: 'no-repeat' }}>
             <div className='container justify-content-center'>

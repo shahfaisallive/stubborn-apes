@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-bootstrap'
 import { ReactComponent as OpenseaIcon } from '../media/opensea.svg'
 import { ReactComponent as DiscordIcon } from '../media/discord.svg'
 import { ReactComponent as TwitterIcon } from '../media/twitter.svg'
 import { ReactComponent as InstaIcon } from '../media/insta.svg'
+import { NavLink } from 'react-router-dom'
 
 
 const Navbar = () => {
@@ -56,14 +56,14 @@ const Navbar = () => {
     return (
         <nav className={`navbar navbar-expand-lg navbar-light fixed-top ${navScroll}`}>
             <div className='container-fluid ml-5 mr-5'>
-                <NavLink className="navbar-brand" id="brand-title" to="/"><img alt="logo" src={"/images/logo.png"} className='logo-img' id={scrollLogo}></img></NavLink>
+                <a href='/' className="navbar-brand" id="brand-title" to="/"><img alt="logo" src={"/images/logo.png"} className='logo-img' id={scrollLogo}></img></a>
                 <button className="navbar-toggler toggle-btn" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon "></span>
                 </button>
                 <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul className="navbar-nav mt-3">
                         <li className="nav-item">
-                            <NavLink className="nav-link" activeClassName="activeLink" to="#"><p className='text_one' onClick={navHomeHandler}>Home</p></NavLink>
+                            <NavLink className="nav-link" activeClassName="activeLink" to="/"><p className='text_one' onClick={navHomeHandler}>Home</p></NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link " activeClassName="activeLink" to="#"><p className='text_one' onClick={navAboutHandler}>About</p></NavLink>

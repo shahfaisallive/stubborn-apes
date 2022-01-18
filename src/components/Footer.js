@@ -1,4 +1,10 @@
 import React from 'react'
+import { ReactComponent as MailIcon } from '../media/mail.svg'
+import { ReactComponent as CallIcon } from '../media/call.svg'
+import { ReactComponent as OpenseaIcon } from '../media/opensea.svg'
+import { ReactComponent as DiscordIcon } from '../media/discord.svg'
+import { ReactComponent as TwitterIcon } from '../media/twitter.svg'
+import { ReactComponent as InstaIcon } from '../media/insta.svg'
 
 const Footer = () => {
     return (
@@ -30,15 +36,22 @@ const Footer = () => {
             </div>
 
             <hr style={{ borderStyle: 'solid', borderWidth: '1px' }}></hr>
-            <div className='container-fluid row d-flex justify-content-center'>
-                <div className='col-3'>
-                    <p>asdasd sd asda dasds</p>
+            <div className='container-fluid row d-flex justify-content-center pr-5 pl-5'>
+                <div className='col-4 d-flex'>
+                    <p className='basic-text2'><MailIcon className="ft-icon" />  mintown@gmail.com</p>
+                    <p className='basic-text2 ml-3'><CallIcon className="ft-icon" />  021 3657 3258 15</p>
                 </div>
-                <div className='col-6'>
-                    <p className='ft-text4 text-center'>Copyright © 2022 Mintown. All Rights Reserved.</p>
+                <div className='col-4'>
+                    <p className='ft-text1 text-center'>Copyright © 2022 Mintown. All Rights Reserved.</p>
                 </div>
-                <div className='col-3 d-flex justify-content-end'>
-                    <p>asdasd sd asda dasds</p>
+                <div className='col-4 d-flex justify-content-end'>
+                    <p className="basic-text1 mr-3">Follow us on: </p>
+                    <div>
+                        <TwitterIcon className="ft-icon ml-2" />
+                        <InstaIcon className="ft-icon ml-2" />
+                        <DiscordIcon className="ft-icon ml-2" />
+                        <OpenseaIcon className="ft-icon ml-2" />
+                    </div>
                 </div>
             </div>
         </div>

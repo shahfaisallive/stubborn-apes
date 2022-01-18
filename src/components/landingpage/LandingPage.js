@@ -5,17 +5,17 @@ import Aboutus from './Aboutus';
 import Specs from './Specs';
 import Roadmap from './Roadmap.js'
 import FAQs from './FAQs.js'
-import Footer from './Footer';
+import OurTeam from './OurTeam';
 
-const LandingPage = () => {
+const LandingPage = ({days, hours, minutes, seconds}) => {
     return (
         <>
-            <Header />
+            <Header seconds={seconds} minutes={minutes} hours={hours} days={days} />
             <Aboutus />
             <Specs />
             <Roadmap />
             <FAQs />
-            <Footer />
+            <OurTeam />
         </>
     )
 }
