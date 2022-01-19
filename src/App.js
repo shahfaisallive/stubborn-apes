@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import LandingPage from './components/landingpage/LandingPage';
 import MyNFTs from './components/nfts/MyNFTs';
 import NFTDetails from './components/nfts/NFTDetails';
+import OurTeam from './components/OurTeam';
 import Footer from './components/Footer';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/" element={<LandingPage seconds={seconds} minutes={minutes} hours={hours} days={days} />} />
           <Route path="/mynfts" element={<MyNFTs />} />
           <Route path="/nftdetail" element={<NFTDetails seconds={seconds} minutes={minutes} hours={hours} days={days} />} />
+          <Route path="/team" element={<OurTeam />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -1,6 +1,6 @@
 body{
   background-color: black;
-  /* font-family: "Montserrat", sans-serif; */
+  font-family: "Montserrat", sans-serif;
 }
 
 /* GLOBAL CSS */
@@ -72,6 +72,7 @@ body{
 .heading1{
   font-size: 30px;
   color: #54A522;
+  font-family: "Audiowide", sans-serif !important;
 }
 .heading2{
   font-size: 20px;
@@ -147,7 +148,7 @@ body{
   height:auto;
   width: auto;
   padding-top:15%;
-  padding-bottom: 10%;
+  padding-bottom: 6%;
 }
 
 .header-text1{
@@ -161,6 +162,7 @@ body{
 .header-title{
   color: #54A522;
   font-size: 50px;
+  font-family: "Audiowide", sans-serif !important;
 }
 .timer-div{
   font-size: 80px;
@@ -177,6 +179,7 @@ body{
 /* ABOUT US STYLES */
 .aboutus-wrapper{
   padding-bottom: 70px;
+  padding-top: 70px;
 }
 .aboutus-left{
   padding-top: 150px;
@@ -249,12 +252,10 @@ body{
   margin-left: 20%;
 }
 
-.rm-left{
-
+#mobileView{
+display: none;    
 }
-.rm-right{
 
-}
 .rm-mid{
   align-content: center;
 }
@@ -285,16 +286,16 @@ body{
   margin-top: 270px;
 }
 #rm3{
-  margin-top: 300px;
+  margin-top: 280px;
 }
 #rm4{
-  margin-top: 300px;
+  margin-top: 280px;
 }
 #rm5{
-  margin-top: 350px;
+  margin-top: 330px;
 }
 #rm6{
-  margin-top: 380px;
+  margin-top: 330px;
 }
 
 
@@ -366,7 +367,9 @@ body{
 .ft-icon{
   width: 20px;
 }
-
+#ftMobView{
+  display: none !important;
+}
 
 
 /* MYNFTS STYLES */
@@ -472,14 +475,18 @@ body{
 .nft-price-div{
   margin-top: -10px;
 }
+.details-btn-container{
+  justify-content: start;
+}
 
 /* TEAM STYLES */
 /* TEAM STYLES */
 /* TEAM STYLES */
 .team-wrapper{
   background-color: #111111;
-  padding-top: 70px;
+  padding-top: 140px;
   padding-bottom: 50px;
+  border-bottom: 1px solid rgb(104, 94, 94);
 }
 .team-text1{
   font-size: 28px;
@@ -499,5 +506,131 @@ body{
   .nav-social-container{
     margin-left: 0px;
   }
+  .navbar-wrap{
+    background-color: black;
+  }
+  
+  .scrollNavBar{
+    background: black;
+  }
 
+
+  .header-wrapper{
+    padding-top:37%;
+  }
+  .header-text1{
+    font-size: 18px;
+  }
+  .header-text2{
+    color: white;
+    font-size: 16px;
+  }
+  .header-title{
+    font-size: 30px;
+  }
+  #headerbtn1{
+    margin-right: 0% !important;
+  }
+  #headerbtn2{
+    margin-left: 0% !important;
+    margin-top: 10px;
+  }
+  .timer-div{
+    font-size: 45px;
+  }
+
+
+  .aboutus-left{
+    padding-top: 0px;
+    padding-bottom: 50px;
+  }
+  .aboutus-apes{
+    width: 100%;
+    margin-left: 0px;
+  }
+  .about-stats-div{
+    width: 90%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 20px;
+  }
+
+
+
+  .roadmap-wrapper{
+    padding-top: 30px;
+  }
+  #webView{
+    display: none;
+  }
+  #mobileView{
+    display: flex;
+  }
+  .circle-icon{
+    width: 30px;
+  }
+
+  #rm2{
+    margin-top: 90px;
+  }
+  #rm3{
+    margin-top: 110px;
+  }
+  #rm4{
+    margin-top: 130px;
+  }
+  #rm5{
+    margin-top: 130px;
+  }
+  #rm6{
+    margin-top: 140px;
+  }
+
+
+
+  .ft-text2{
+    font-size: 14px;
+    margin-left: 13px;
+  }
+  #ftWebView{
+    display: none !important;
+  }
+  #ftMobView{
+    display: flex !important;
+  }
+  .copyright-text{
+    font-size: 10px !important;
+  }
+
+
+
+  .details-timer-div{
+    padding: 15px;
+    width: 87%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+  } 
+  .timer-div2{
+    font-size: 25px;
+  }
+  .nftdetails-right{
+    padding-left: 30px !important;
+  }
+  .nft-name-text{
+    font-size: 25px;
+    margin-top: 5px;
+  }
+  .details-btn-container{
+    justify-content:center
+  }
+  #detailbtn1{
+    margin-left: 0px !important;
+    width: 100%;
+  }
+  #detailbtn2{
+    margin-left: 0px !important;
+    margin-top: 10px;
+    width: 100%;
+  }
 }

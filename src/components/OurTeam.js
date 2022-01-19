@@ -4,7 +4,13 @@ const OurTeam = () => {
     return (
         <div className='container-fluid team-wrapper'>
             <div className='container'>
-                <div className='row d-flex justify-content-center'>
+                <div className='row d-flex'>
+                    <p className='mynft-text1 mr-2'>Home</p>
+                    <span className='mynft-text1'> &gt; </span>
+                    <p className='mynft-text2 ml-2'>Our Team</p>
+                </div>
+
+                <div className='row d-flex justify-content-center mt-5'>
                     <p className='heading1'>Meet Our Team</p>
                 </div>
 

@@ -65,11 +65,11 @@ const NFTDetails = ({ days, hours, minutes, seconds }) => {
                             </div>
                         </div>
 
-                        <div className='row d-flex '>
-                            <button className='button4 ml-2'>
+                        <div className='row d-flex details-btn-container'>
+                            <button className='button4 ml-2' id='detailbtn1'>
                                 Place a Bid
                             </button>
-                            <button className='button2 ml-3'>
+                            <button className='button2 ml-3' id='detailbtn2'>
                                 Buy Now
                             </button>
                         </div>

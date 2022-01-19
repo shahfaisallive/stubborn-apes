@@ -10,7 +10,7 @@ import { ReactComponent as EtherIcon } from '../../media/ether.svg'
 
 const Aboutus = () => {
     return (
-        <div className='container aboutus-wrapper'>
+        <div className='container aboutus-wrapper' id='about'>
             <div className='row'>
                 <div className='col-md-6 aboutus-left'>
                     <p className='heading1'>About Us</p>

@@ -3,7 +3,7 @@ import Banner from '../../media/banner.png'
 
 const Header = ({days, hours, minutes, seconds}) => {
     return (
-        <div className='container-fluid header-wrapper' id='home' style={{ backgroundImage: `url(${Banner})`, backgroundSize: '100%', backgroundRepeat: 'no-repeat' }}>
+        <div className='container-fluid header-wrapper' id='home' style={{ backgroundImage: `url(${Banner})`, backgroundSize: 'contain', backgroundRepeat: 'repeat-y' }}>
             <div className='container justify-content-center'>
                 <div className='row d-block'>
                     <p className='header-text1 text-center'>One of the best NFT's marketplace</p>
@@ -12,10 +12,10 @@ const Header = ({days, hours, minutes, seconds}) => {
                 </div>
 
                 <div className='row justify-content-center d-flex mt-5'>
-                    <button className='button1 mr-2'>
+                    <button className='button1 mr-2' id='headerbtn1'>
                         View on Opensea
                     </button>
-                    <button className='button2 ml-2'>
+                    <button className='button2 ml-2' id='headerbtn2'>
                         Mint Now
                     </button>
                 </div>

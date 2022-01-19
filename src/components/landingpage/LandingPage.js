@@ -5,7 +5,6 @@ import Aboutus from './Aboutus';
 import Specs from './Specs';
 import Roadmap from './Roadmap.js'
 import FAQs from './FAQs.js'
-import OurTeam from './OurTeam';
 
 const LandingPage = ({days, hours, minutes, seconds}) => {
     return (
@@ -15,7 +14,6 @@ const LandingPage = ({days, hours, minutes, seconds}) => {
             <Specs />
             <Roadmap />
             <FAQs />
-            <OurTeam />
         </>
     )
 }

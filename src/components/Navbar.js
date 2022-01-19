@@ -25,32 +25,24 @@ const Navbar = () => {
 
 
     const navHomeHandler = () => {
-        // const element = document.getElementById("home");
-        // element.scrollIntoView({ behavior: "smooth", block: "start" })
+        const element = document.getElementById("home");
+        element.scrollIntoView({ behavior: "smooth", block: "start" })
 
     }
     const navAboutHandler = () => {
-        // const element = document.getElementById("about");
-        // element.scrollIntoView({ behavior: "smooth", block: "start" })
-
+        const element = document.getElementById("about");
+        element.scrollIntoView({ behavior: "smooth", block: "start" })
     }
-    const navMyNftHandler = () => {
-        // const element = document.getElementById("perks");
-        // element.scrollIntoView({ behavior: "smooth", block: "start" })
 
-    }
     const navRoadmapHandler = () => {
-        // const element = document.getElementById("roadmap");
-        // element.scrollIntoView({ behavior: "smooth", block: "start" })
+        const element = document.getElementById("roadmap");
+        element.scrollIntoView({ behavior: "smooth", block: "start" })
 
     }
-    const navTeamHandler = () => {
-        // const element = document.getElementById("ourteam");
-        // element.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    }
+
     const navFaqHandler = () => {
-        // const element = document.getElementById("faqs");
-        // element.scrollIntoView({ behavior: "smooth", block: "start" })
+        const element = document.getElementById("faqs");
+        element.scrollIntoView({ behavior: "smooth", block: "start" })
     }
 
     return (
@@ -72,13 +64,13 @@ const Navbar = () => {
                             <NavLink className="nav-link " activeClassName="activeLink" to="#"><p className='text_one' onClick={navRoadmapHandler}>Roadmap</p></NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link " activeClassName="activeLink" to="/mynfts"><p className='text_one' onClick={navMyNftHandler}>My NFTs</p></NavLink>
+                            <NavLink className="nav-link " activeClassName="activeLink" to="/mynfts"><p className='text_one'>My NFTs</p></NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link " activeClassName="activeLink" to="#"><p className='text_one' onClick={navTeamHandler}>Our Team</p></NavLink>
+                            <NavLink className="nav-link " activeClassName="activeLink" to="/team"><p className='text_one'>Our Team</p></NavLink>
                         </li>
                         <li className="nav-item ">
-                            <NavLink className="nav-link" activeClassName="activeLink" to="#"><p className='text_one ' onClick={navFaqHandler}>FAQs</p></NavLink>
+                            <NavLink className="nav-link" activeClassName="activeLink" to="/"><p className='text_one ' onClick={navFaqHandler}>FAQs</p></NavLink>
                         </li>
                     </ul>
 
