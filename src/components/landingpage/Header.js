@@ -3,7 +3,7 @@ import Banner from '../../media/banner.png'
 
 const Header = ({days, hours, minutes, seconds}) => {
     return (
-        <div className='container-fluid header-wrapper' id='home' style={{ backgroundImage: `url(${Banner})`, backgroundSize: 'contain', backgroundRepeat: 'repeat-y' }}>
+        <div className='container-fluid header-wrapper' id='home' style={{ backgroundImage: `url(${Banner})`, backgroundSize: '100%', backgroundRepeat: 'repeat-y' }}>
             <div className='container justify-content-center'>
                 <div className='row d-block'>
                     <p className='header-text1 text-center'>One of the best NFT's marketplace</p>
