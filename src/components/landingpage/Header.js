@@ -6,7 +6,6 @@ const Header = ({days, hours, minutes, seconds}) => {
         <div className='container-fluid header-wrapper' id='home' style={{ backgroundImage: `url(${Banner})`, backgroundSize: '100%', backgroundRepeat: 'repeat-y' }}>
             <div className='container justify-content-center'>
                 <div className='row d-block'>
-                    <p className='header-text1 text-center'>One of the best NFT's marketplace</p>
                     <p className='header-title text-center'>Welcome to the <br /> Stubborn Ape Society</p>
                     <p className='header-text2 text-center'>The Stubborn Ape Society is a collection of 7,000 Unique Stubborn Ape NFT’s</p>
                 </div>

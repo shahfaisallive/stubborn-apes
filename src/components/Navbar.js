@@ -8,20 +8,20 @@ import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
     const [navScroll, setNavScroll] = useState('navbar-wrap')
-	const [scrollLogo, setScrollLogo] = useState('navbar-logo')
+    const [scrollLogo, setScrollLogo] = useState('navbar-logo')
 
-	useEffect(() => {
-		window.addEventListener("scroll", function () {
+    useEffect(() => {
+        window.addEventListener("scroll", function () {
 
-			if (window.pageYOffset > 0) {
-				setNavScroll('scrollNavBar')
-				setScrollLogo('scrollNavLogo')
-			} else {
-				setNavScroll('navbar-wrap')
-				setScrollLogo('navbar-logo')
-			}
-		});
-	}, [])
+            if (window.pageYOffset > 0) {
+                setNavScroll('scrollNavBar')
+                setScrollLogo('scrollNavLogo')
+            } else {
+                setNavScroll('navbar-wrap')
+                setScrollLogo('navbar-logo')
+            }
+        });
+    }, [])
 
 
     const navHomeHandler = () => {
@@ -58,10 +58,10 @@ const Navbar = () => {
                             <NavLink className="nav-link" activeClassName="activeLink" to="/"><p className='text_one' onClick={navHomeHandler}>Home</p></NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link " activeClassName="activeLink" to="#"><p className='text_one' onClick={navAboutHandler}>About</p></NavLink>
+                            <NavLink className="nav-link " activeClassName="activeLink" to="/"><p className='text_one' onClick={navAboutHandler}>About</p></NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link " activeClassName="activeLink" to="#"><p className='text_one' onClick={navRoadmapHandler}>Roadmap</p></NavLink>
+                            <NavLink className="nav-link " activeClassName="activeLink" to="/"><p className='text_one' onClick={navRoadmapHandler}>Roadmap</p></NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink className="nav-link " activeClassName="activeLink" to="/mynfts"><p className='text_one'>My NFTs</p></NavLink>
@@ -76,13 +76,21 @@ const Navbar = () => {
 
                     <ul className='navbar-nav'>
                         <li className="nav-item nav-social-container">
-                            <TwitterIcon className='nav-social-icon' />
-                            <InstaIcon className='nav-social-icon ml-3' />
-                            <DiscordIcon className='nav-social-icon ml-3' />
-                            <OpenseaIcon className='nav-social-icon ml-3' />
+                            <a href='https://twitter.com/StubbornApeNFT' target={'_blank'} rel="noreferrer">
+                                <TwitterIcon className='nav-social-icon' />
+                            </a>
+                            <a href='https://www.instagram.com/thestubbornapesociety/' target={'_blank'} rel="noreferrer">
+                                <InstaIcon className='nav-social-icon ml-3' />
+                            </a>
+                            <a href='http://discord.gg/stubbornapesociety' target={'_blank'} rel="noreferrer">
+                                <DiscordIcon className='nav-social-icon ml-3' />
+                            </a>
+                            <a href='http://opensea.io' target={'_blank'} rel="noreferrer">
+                                <OpenseaIcon className='nav-social-icon ml-3' />
+                            </a>
                         </li>
                     </ul>
-                    
+
                 </div>
             </div>
         </nav>

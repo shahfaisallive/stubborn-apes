@@ -15,10 +15,7 @@ const FAQs = () => {
                                     <img src={'/images/dropicon.png'} alt='drop icon' className='drop-icon' />
                                 </Accordion.Button>
                                 <Accordion.Body bsPrefix='faq-text2'>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat.
+                                    There will be two presales ahead of the public launch on 4/16 at 12pm EST. Please join our Discord to learn how you can join the whitelist and take advantage of the presale launch. Price at Public Launch will start at 0.08 ETH+gas.
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
@@ -29,10 +26,7 @@ const FAQs = () => {
                                     <img src={'/images/dropicon.png'} alt='drop icon' className='drop-icon' />
                                 </Accordion.Button>
                                 <Accordion.Body bsPrefix='faq-text2'>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat.
+                                    Once you mint your Stubborn Ape Society NFT, you will be able to see it by connecting your crypto wallet to OpenSea.
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
@@ -43,10 +37,7 @@ const FAQs = () => {
                                     <img src={'/images/dropicon.png'} alt='drop icon' className='drop-icon' />
                                 </Accordion.Button>
                                 <Accordion.Body bsPrefix='faq-text2'>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat.
+                                    The Public Launch will be held on April 16, 2022 at 12pm EST, While presale will take place on April 14 at 5pm EST.
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
@@ -57,10 +48,7 @@ const FAQs = () => {
                                     <img src={'/images/dropicon.png'} alt='drop icon' className='drop-icon' />
                                 </Accordion.Button>
                                 <Accordion.Body bsPrefix='faq-text2'>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat.
+                                    Once you own two Stubborn Apes, You will be able to breed them and create a 2nd Gen Rare Stubborn Ape. You can also use your Stubborn ape as a profile picture online and even sell your Stubborn ape for Profits.
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
@@ -73,10 +61,7 @@ const FAQs = () => {
                                     <img src={'/images/dropicon.png'} alt='drop icon' className='drop-icon' />
                                 </Accordion.Button>
                                 <Accordion.Body bsPrefix='faq-text2'>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat.
+                                    4% of the Secondary sales will be deducted in royalties for the Stubborn Ape Society Team. An additional 4% will also be used solely to grow the Stubborn Ape Society Community through marketing. This will allow us to stay competitive maintaining the floor for our holders.
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
@@ -87,10 +72,7 @@ const FAQs = () => {
                                     <img src={'/images/dropicon.png'} alt='drop icon' className='drop-icon' />
                                 </Accordion.Button>
                                 <Accordion.Body bsPrefix='faq-text2'>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat.
+                                    7000 unique NFT’s make up the Stubborn Ape Society.
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
@@ -101,10 +83,7 @@ const FAQs = () => {
                                     <img src={'/images/dropicon.png'} alt='drop icon' className='drop-icon' />
                                 </Accordion.Button>
                                 <Accordion.Body bsPrefix='faq-text2'>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat.
+                                    Ethereum 721 contract- A huge update allowing for massive savings in gas fees.
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>
@@ -115,10 +94,7 @@ const FAQs = () => {
                                     <img src={'/images/dropicon.png'} alt='drop icon' className='drop-icon' />
                                 </Accordion.Button>
                                 <Accordion.Body bsPrefix='faq-text2'>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat.
+                                    Post Launch and after the reveal, rarity characteristics will be available on opensea.
                                 </Accordion.Body>
                             </Accordion.Item>
                         </Accordion>

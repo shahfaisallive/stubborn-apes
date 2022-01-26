@@ -147,7 +147,7 @@ body{
 .header-wrapper{
   height:auto;
   width: auto;
-  padding-top:15%;
+  padding-top:14%;
   padding-bottom: 6%;
 }
 
@@ -365,6 +365,10 @@ display: none;
   font-weight: 600;
   margin-left: 10px;
   margin-right: 10px;
+}
+.ft-text2:hover{
+  text-decoration: underline;
+  cursor: pointer;
 }
 .ft-icon{
   width: 20px;

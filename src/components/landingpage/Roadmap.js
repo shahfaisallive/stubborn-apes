@@ -21,8 +21,7 @@ const Roadmap = () => {
         <div className='container-fluid roadmap-wrapper justify-content-center d-flex' id='roadmap'>
             <div className='container'>
                 <div className='row justify-content-center roadmap-title-div'>
-                    <p className='heading1'>Roadmap</p>
-                    <p className='basic-text1 text-center'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,</p>
+                    <p className='heading1 mb-5'>Roadmap</p>
                 </div>
 
                 <div className='row mt-5' id='webView'>
@@ -39,7 +38,7 @@ const Roadmap = () => {
 
                         <div className='roadmap-single-div' id='rm6'>
                             <p className='heading2'>Stubborn Ape Society In the Metaverse 80-100%</p>
-                            <p className='basic-text2'>We will purchase land for the Stubborn Ape Society where we can host private events in the Metaverse! Stubborn Ape Breeding Feature</p>
+                            <p className='basic-text2'>We will purchase land for the Stubborn Ape Society where we can host private events in the Metaverse!</p>
                         </div>
                     </div>
 
@@ -121,7 +120,7 @@ const Roadmap = () => {
 
                         <div className='roadmap-single-div' id='rm6'>
                             <p className='heading2'>Stubborn Ape Society In the Metaverse 80-100%</p>
-                            <p className='basic-text2'>We will purchase land for the Stubborn Ape Society where we can host private events in the Metaverse! Stubborn Ape Breeding Feature</p>
+                            <p className='basic-text2'>We will purchase land for the Stubborn Ape Society where we can host private events in the Metaverse!</p>
                         </div>
                     </div>
                 </div>
