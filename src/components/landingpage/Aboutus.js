@@ -36,28 +36,21 @@ const Aboutus = () => {
             </div>
 
             <div className='row d-flex mt-5'>
-                <div className='col-sm-3 justify-content-center d-flex'>
-                    <div className='about-stats-div'>
-                        <GreenIcon className='traits-icons' />
-                        <p className='traits-text1 text-center'>0</p>
-                        <p className='traits-text2 text-center'>Total Minted</p>
-                    </div>
-                </div>
-                <div className='col-sm-3 justify-content-center d-flex'>
+                <div className='col-sm-4 justify-content-center d-flex'>
                     <div className='about-stats-div'>
                         <YellowIcon className='traits-icons' />
                         <p className='traits-text1 text-center'>100</p>
                         <p className='traits-text2 text-center'>Traits</p>
                     </div>
                 </div>
-                <div className='col-sm-3 justify-content-center d-flex'>
+                <div className='col-sm-4 justify-content-center d-flex'>
                     <div className='about-stats-div'>
                         <BlueIcon className='traits-icons' />
                         <p className='traits-text1 text-center'>0.06<EtherIcon className='trait-ether-icon'/></p>
                         <p className='traits-text2 text-center'>Presale Cost</p>
                     </div>
                 </div>
-                <div className='col-sm-3 justify-content-center d-flex'>
+                <div className='col-sm-4 justify-content-center d-flex'>
                     <div className='about-stats-div'>
                         <RedIcon className='traits-icons' />
                         <p className='traits-text1 text-center'>0.08<EtherIcon className='trait-ether-icon'/></p>

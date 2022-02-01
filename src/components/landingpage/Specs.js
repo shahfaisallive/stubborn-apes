@@ -12,13 +12,13 @@ const Specs = () => {
                     <p className='heading1'>Rarity and Specs</p>
                     <p className='basic-text1'>We strive to build the strongest community for our members by creating endless value</p>
 
-                    <div className='specs-points mt-5'>
+                    <div className='specs-points mt-4'>
                         <p className='basic-text1'><ArrowIcon className='arrow-icon' />Every Stubborn Ape is Unique with 100 different traits</p>
-                        <p className='basic-text1'><ArrowIcon className='arrow-icon' />Legendary Stubborn Ape #777 wins $10,000</p>
                         <p className='basic-text1'><ArrowIcon className='arrow-icon' />Breed your NFT by combining two Stubborn Apes</p>
+                        <p className='basic-text1'><ArrowIcon className='arrow-icon' />One Lucky Winner wins $10,000</p>
                     </div>
 
-                    <button className='button2 mt-4'>
+                    <button className='button2 mt-5'>
                         Mint Now
                     </button>
                 </div>

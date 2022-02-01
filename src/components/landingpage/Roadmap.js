@@ -28,7 +28,7 @@ const Roadmap = () => {
                     <div className='col-sm-5 rm-left'>
                         <div className='roadmap-single-div' id='rm2'>
                             <p className='heading2'>Give Aways 10-20%</p>
-                            <p className='basic-text2'>Get Ready for some insane giveaways! There are going to multiple chances leading up to launch day where fans can enter for a chance to win their very own Stubborn Ape NFT, giving them access out exclusive Stubborn Ape Society. Whoever is lucky enough to mint Stubborn Ape #777 will win $10,000!</p>
+                            <p className='basic-text2'>Get Ready for some insane giveaways! There are going to multiple chances leading up to launch day where fans can enter for a chance to win custom one of kind merch, signed art, and their very own Stubborn Ape NFT. Don't forget about our weekly member giveaway where we will select a winner to win .05 ETH! Our Grand Prize will be a lucky winner who wins $10,000!</p>
                         </div>
 
                         <div className='roadmap-single-div' id='rm4'>
@@ -100,7 +100,7 @@ const Roadmap = () => {
 
                         <div className='roadmap-single-div' id='rm2'>
                             <p className='heading2'>Give Aways 10-20%</p>
-                            <p className='basic-text2'>Get Ready for some insane giveaways! There are going to multiple chances leading up to launch day where fans can enter for a chance to win their very own Stubborn Ape NFT, giving them access out exclusive Stubborn Ape Society. Whoever is lucky enough to mint Stubborn Ape #777 will win $10,000!</p>
+                            <p className='basic-text2'>Get Ready for some insane giveaways! There are going to multiple chances leading up to launch day where fans can enter for a chance to win custom one of kind merch, signed art, and their very own Stubborn Ape NFT. Don't forget about our weekly member giveaway where we will select a winner to win .05 ETH! Our Grand Prize will be a lucky winner who wins $10,000</p>
                         </div>
 
                         <div className='roadmap-single-div' id='rm3'>

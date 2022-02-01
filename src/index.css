@@ -165,12 +165,16 @@ body{
   font-family: "Audiowide", sans-serif !important;
 }
 .timer-div{
+  width: 60%;
+}
+.timer-text1{
   font-size: 80px;
   color: white;
 }
-.timer-div-text{
+.timer-text2{
   font-size: 20px;
   color: white;
+  margin-top: -20px;
 }
 
 
@@ -542,10 +546,19 @@ display: none;
     margin-top: 10px;
   }
   .timer-div{
-    font-size: 45px;
+    width: 100%;
   }
-
-
+  .timer-text1{
+    font-size: 30px;
+    color: white;
+    text-align: center;
+  }
+  .timer-text2{
+    font-size: 12px;
+    color: white;
+    margin-top: -20px;
+    text-align: center;
+  }
   .aboutus-left{
     padding-top: 0px;
     padding-bottom: 50px;

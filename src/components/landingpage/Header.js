@@ -1,7 +1,7 @@
 import React from 'react'
 import Banner from '../../media/banner.png'
 
-const Header = ({days, hours, minutes, seconds}) => {
+const Header = ({ days, hours, minutes, seconds }) => {
     return (
         <div className='container-fluid header-wrapper' id='home' style={{ backgroundImage: `url(${Banner})`, backgroundSize: '100%', backgroundRepeat: 'repeat-y' }}>
             <div className='container justify-content-center'>
@@ -19,13 +19,45 @@ const Header = ({days, hours, minutes, seconds}) => {
                     </button>
                 </div>
 
-                <div className='row justify-content-center d-flex mt-5'>
-                    <div className='text-center'>
+                <p className='heading1 text-center mt-5'>PRESALE STARTS IN</p>
+
+                <div className='row justify-content-center'>
+                    {/* <div className='text-center'>
                         <div className='timer-div'>
                             <span>{days}</span>  :  <span>{hours}</span>  :  <span>{minutes}</span>  :  <span>{seconds}</span>
                         </div>
                         <div className='timer-div-text'>
-                            {/* <p>Days         :           Hours           :           Minutes         :           Seconds</p> */}
+                        <span>days</span>  :  <span>hours</span>  :  <span>minutes</span>  :  <span>seconds</span>
+                        </div>
+                    </div> */}
+
+                    <div className='container d-flex justify-content-center'>
+                        <div className='row timer-div justify-content-center'>
+                            <div className='col-2 text-center timer-unit-box'>
+                                <p className='timer-text1'>{days}</p>
+                                <p className='timer-text2'>days</p>
+                            </div>
+                            <div className='col-1 text-center timer-unit-box'>
+                                <p className='timer-text1'>:</p>
+                            </div>
+                            <div className='col-2 text-center timer-unit-box'>
+                                <p className='timer-text1'>{hours}</p>
+                                <p className='timer-text2'>hours</p>
+                            </div>
+                            <div className='col-1 text-center timer-unit-box'>
+                                <p className='timer-text1'>:</p>
+                            </div>
+                            <div className='col-2 text-center timer-unit-box'>
+                                <p className='timer-text1'>{minutes}</p>
+                                <p className='timer-text2'>minutes</p>
+                            </div>
+                            <div className='col-1 text-center timer-unit-box'>
+                                <p className='timer-text1'>:</p>
+                            </div>
+                            <div className='col-2 text-center timer-unit-box'>
+                                <p className='timer-text1'>{seconds}</p>
+                                <p className='timer-text2'>seconds</p>
+                            </div>
                         </div>
                     </div>
                 </div>
