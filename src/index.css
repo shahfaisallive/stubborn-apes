@@ -123,7 +123,7 @@ body{
 }
 
 .nav-social-container{
-  margin-left: 200px;
+  margin-left: 70px;
 }
 .nav-link{
   margin-right: 15px;
@@ -139,8 +139,40 @@ body{
 .activeLink{
   color: #54A522;
 }
+.connect-btn{
+  margin-right: 20px;
+  border: none;
+  border-radius: 5px;
+  width: 100px;
+  background-color: rgba(129, 125, 125, 0.5);
+  color: #54A522;
+  padding: 3px;
+}
+.connect-btn:hover{
+  background-color: #54A522;
+  color: white;
+}
 
-
+.admin-btn{
+  margin-right: 20px;
+  border: none;
+  border-radius: 5px;
+  width: 100px;
+  background-color: rgba(37, 35, 35, 0.5);
+  color: #ffffff;
+  padding: 3px;
+}
+.admin-btn:hover{
+  cursor: pointer;
+  background-color: #000000;
+  color: white;
+}
+.address{
+  color: white;
+  font-size: 14px;
+  margin-right: 20px;
+  margin-top: 2px;
+}
 /* HEADER STYLE */
 /* HEADER STYLE */
 /* HEADER STYLE */
@@ -506,6 +538,16 @@ display: none;
   font-size: 16px;
   margin-top: -10px;
   color: #54A522;
+}
+
+
+
+/* ADMIN WRAPPER */
+.admin-wrapper{
+  background-color: #111111;
+  padding-top: 140px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid rgb(104, 94, 94);
 }
 
 

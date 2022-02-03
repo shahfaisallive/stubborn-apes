@@ -6,7 +6,7 @@ import { ReactComponent as InstaIcon } from '../media/insta.svg'
 import { NavLink } from 'react-router-dom'
 
 
-const Navbar = () => {
+const Navbar = ({ connectToMetamask, metamaskConnected, accountAddress, isOwner }) => {
     const [navScroll, setNavScroll] = useState('navbar-wrap')
     const [scrollLogo, setScrollLogo] = useState('navbar-logo')
 
@@ -75,7 +75,19 @@ const Navbar = () => {
                     </ul>
 
                     <ul className='navbar-nav'>
-                        <li className="nav-item nav-social-container">
+                        <li className={`nav-item nav-social-container d-flex ${!isOwner ? 'pt-3' : ''}`}>
+                            {!metamaskConnected ?
+                                <button className='connect-btn' onClick={connectToMetamask}>
+                                    Connect
+                                </button> :
+                                metamaskConnected && isOwner ?
+                                    <NavLink to='/admin'>
+                                        <button className='admin-btn'>
+                                            Admin
+                                        </button>
+                                    </NavLink> :
+                                    <p className='address'>{`${accountAddress.slice(0, 5)}...${accountAddress.slice(38, 43)}`}</p>
+                            }
                             <a href='https://twitter.com/StubbornApeNFT' target={'_blank'} rel="noreferrer">
                                 <TwitterIcon className='nav-social-icon' />
                             </a>
