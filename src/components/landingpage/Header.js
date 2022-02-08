@@ -22,15 +22,6 @@ const Header = ({ days, hours, minutes, seconds }) => {
                 <p className='heading1 text-center mt-5'>PRESALE STARTS IN</p>
 
                 <div className='row justify-content-center'>
-                    {/* <div className='text-center'>
-                        <div className='timer-div'>
-                            <span>{days}</span>  :  <span>{hours}</span>  :  <span>{minutes}</span>  :  <span>{seconds}</span>
-                        </div>
-                        <div className='timer-div-text'>
-                        <span>days</span>  :  <span>hours</span>  :  <span>minutes</span>  :  <span>seconds</span>
-                        </div>
-                    </div> */}
-
                     <div className='container d-flex justify-content-center'>
                         <div className='row timer-div justify-content-center'>
                             <div className='col-2 text-center timer-unit-box'>

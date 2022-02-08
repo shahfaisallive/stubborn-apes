@@ -77,7 +77,7 @@ const Navbar = ({ connectToMetamask, metamaskConnected, accountAddress, isOwner 
                     <ul className='navbar-nav'>
                         <li className={`nav-item nav-social-container d-flex ${!isOwner ? 'pt-3' : ''}`}>
                             {!metamaskConnected ?
-                                <button className='connect-btn' onClick={connectToMetamask}>
+                                <button className='connect-btn mb-3' onClick={connectToMetamask}>
                                     Connect
                                 </button> :
                                 metamaskConnected && isOwner ?
