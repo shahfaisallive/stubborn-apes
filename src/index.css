@@ -559,6 +559,10 @@ display: none;
   padding-bottom: 50px;
   border-bottom: 1px solid rgb(104, 94, 94);
 }
+.admin-left{
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
 .admin-txt1{
   font-size: 15px;
   font-weight: 600;
@@ -572,6 +576,7 @@ display: none;
   margin-top: 10px;
   margin-bottom: auto;
   margin-left: 10px;
+  max-width: 75%;
 }
 .input1{
   margin-left: 20px;
@@ -583,7 +588,10 @@ display: none;
 .input1::placeholder{
   font-size: 14px;
 }
-
+.spinner-loader{
+  margin-top: 13px;
+  margin-left: 10px;
+}
 
 /* MEDIA QUERIES */
 /* MEDIA QUERIES */

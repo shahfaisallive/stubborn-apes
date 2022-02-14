@@ -37,9 +37,8 @@ contract StubbornApe is ERC721Enumerable, Ownable {
     );
 
     constructor(
-        string memory _initBaseURI
     ) ERC721('Stubborn Apes', 'APE') {
-        setBaseURI(_initBaseURI);
+        setBaseURI("https://gateway.pinata.cloud/ipfs/QmWYUdDwvm2dTpNRU1kbyHizVmZyg9eGpW9W51HbTwD2XK");
     }
 
     function _baseURI() internal view virtual override returns (string memory) {

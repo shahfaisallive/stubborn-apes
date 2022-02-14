@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useTimer } from 'react-timer-hook';
 import Web3 from 'web3';
+import StubbornApe from './abis/StubbornApe.json';
 
 
 // Importing components
@@ -72,9 +73,22 @@ function App() {
       accountBalance = web3.utils.fromWei(accountBalance, "Ether");
       setAccountBalance(accountBalance);
 
-      if (accounts[0] == '0x0b7C7Efe2183fEf476b5f86cE53dA612c5dC89b6') {
+      if (accounts[0] === '0x0b7C7Efe2183fEf476b5f86cE53dA612c5dC89b6') {
         setIsOwner(true)
       }
+
+      const networkId = await web3.eth.net.getId();
+      const networkData = StubbornApe.networks[networkId]
+
+      if (networkData) {
+        const contract = new web3.eth.Contract(
+          StubbornApe.abi,
+          networkData.address
+        );
+
+        setApeContract(contract)
+        setContractDetected(true)
+      } 
     }
   };
 
@@ -95,7 +109,7 @@ function App() {
       setExpiryTime(saleCounterTime.getTime() - currentTime)
       await loadWeb3();
       await loadBlockchainData();
-      console.log(isOwner);
+      // console.log(isOwner);
       console.log(accountAddress);
     }
     fetchData();
@@ -111,7 +125,7 @@ function App() {
           <Route path="/mynfts" element={<MyNFTs />} />
           <Route path="/nftdetail" element={<NFTDetails seconds={seconds} minutes={minutes} hours={hours} days={days} />} />
           <Route path="/team" element={<OurTeam />} />
-          {isOwner ? <Route path="/admin" element={<AdminScreen accountAddress={accountAddress} />} /> : null}
+          {isOwner ? <Route path="/admin" element={<AdminScreen accountAddress={accountAddress} contract={apeContract} />} /> : null}
         </Routes>
         <Footer />
       </BrowserRouter>

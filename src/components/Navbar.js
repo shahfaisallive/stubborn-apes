@@ -55,22 +55,22 @@ const Navbar = ({ connectToMetamask, metamaskConnected, accountAddress, isOwner 
                 <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul className="navbar-nav mt-3">
                         <li className="nav-item">
-                            <NavLink className="nav-link" activeClassName="activeLink" to="/"><p className='text_one' onClick={navHomeHandler}>Home</p></NavLink>
+                            <NavLink className="nav-link" to="/"><p className='text_one' onClick={navHomeHandler}>Home</p></NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link " activeClassName="activeLink" to="/"><p className='text_one' onClick={navAboutHandler}>About</p></NavLink>
+                            <NavLink className="nav-link " to="/"><p className='text_one' onClick={navAboutHandler}>About</p></NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link " activeClassName="activeLink" to="/"><p className='text_one' onClick={navRoadmapHandler}>Roadmap</p></NavLink>
+                            <NavLink className="nav-link " to="/"><p className='text_one' onClick={navRoadmapHandler}>Roadmap</p></NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link " activeClassName="activeLink" to="/mynfts"><p className='text_one'>My NFTs</p></NavLink>
+                            <NavLink className="nav-link " to="/mynfts"><p className='text_one'>My NFTs</p></NavLink>
                         </li>
                         <li className="nav-item">
-                            <NavLink className="nav-link " activeClassName="activeLink" to="/team"><p className='text_one'>Our Team</p></NavLink>
+                            <NavLink className="nav-link " to="/team"><p className='text_one'>Our Team</p></NavLink>
                         </li>
                         <li className="nav-item ">
-                            <NavLink className="nav-link" activeClassName="activeLink" to="/"><p className='text_one ' onClick={navFaqHandler}>FAQs</p></NavLink>
+                            <NavLink className="nav-link" to="/"><p className='text_one ' onClick={navFaqHandler}>FAQs</p></NavLink>
                         </li>
                     </ul>
 

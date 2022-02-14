@@ -1,6 +1,79 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import Web3 from 'web3';
 
-const AdminScreen = ({ accountAddress }) => {
+const AdminScreen = ({ accountAddress, contract }) => {
+    const [loadingData, setLoadingData] = useState(false)
+    const [paused, setPaused] = useState(null)
+    const [baseURI, setBaseURI] = useState('')
+    const [publicCost, setPublicCost] = useState(null)
+    const [presaleCost, setPresaleCost] = useState(null)
+
+
+    // Input states
+    const [newBaseURI, setNewBaseURI] = useState('')
+    const [newPresaleCost, setNewPresaleCost] = useState()
+    const [newPublicCost, setNewPublicCost] = useState()
+
+
+
+    useEffect(() => {
+        setLoadingData(true)
+        async function fetchData() {
+            const paused = await contract.methods
+                .paused()
+                .call();
+            setPaused(paused)
+
+            const baseURI = await contract.methods
+                .baseURI()
+                .call();
+            setBaseURI(baseURI)
+
+            const presaleCost = await contract.methods
+                .presaleCost()
+                .call();
+            setPresaleCost(Web3.utils.fromWei(presaleCost, 'ether'))
+
+            const publicCost = await contract.methods
+                .publicSaleCost()
+                .call();
+            setPublicCost(Web3.utils.fromWei(publicCost, 'ether'))
+
+
+
+            setLoadingData(false)
+        }
+        fetchData()
+        console.log(paused)
+    }, [paused, baseURI, contract])
+
+
+    const pauseContractHandler = async () => {
+        await contract.methods
+            .pause(!paused)
+            .send({ from: accountAddress })
+    }
+
+    const setBaseURIHandler = async () => {
+        await contract.methods
+            .setBaseURI(newBaseURI)
+            .send({ from: accountAddress })
+    }
+
+    const setPresaleCostHandler = async () => {
+        await contract.methods
+            .setPresaleCost(Web3.utils.toWei(newPresaleCost, 'ether'))
+            .send({ from: accountAddress })
+    }
+
+    const setPublicCostHandler = async () => {
+        await contract.methods
+            .setPublicSaleCost(Web3.utils.toWei(newPublicCost, 'ether'))
+            .send({ from: accountAddress })
+    }
+
+
+
     return <div className='container-fluid admin-wrapper'>
         <div className='container'>
             <div className='row d-block justify-content-center mt-5'>
@@ -9,55 +82,59 @@ const AdminScreen = ({ accountAddress }) => {
             </div>
 
             <div className='row mt-5'>
-                <div className='col-7'>
+                <div className='col-md-7 admin-left' >
                     <div className='admin-options'>
                         <div className='d-flex'>
-                            <button className='button5'>
+                            <button className='button5' onClick={pauseContractHandler}>
                                 Pause Contract
                             </button>
                         </div>
                         <div className='d-flex'>
                             <p className='admin-txt1'>Current Status:</p>
-                            <p className='admin-txt2'>False</p>
+                            {loadingData ? <div className="spinner-border spinner-border-sm text-success spinner-loader" role="status" /> :
+                                paused && !loadingData ? <p className='admin-txt2'>True</p> : <p className='admin-txt2'>False</p>}
                         </div>
                     </div>
 
                     <div className='admin-options mt-4'>
                         <div className='d-flex'>
-                            <button className='button5'>
+                            <button className='button5' onClick={setBaseURIHandler}>
                                 Set Base URI
                             </button>
-                            <input type='text' className='input1' placeholder='Set your base uri' />
+                            <input type='text' className='input1' placeholder='Set your base uri' value={newBaseURI} onChange={(e) => setNewBaseURI(e.target.value)} />
                         </div>
                         <div className='d-flex'>
                             <p className='admin-txt1'>Current URI:</p>
-                            <p className='admin-txt2'>https://ipfs.infura.io/ipfs/</p>
+                            {loadingData ? <div className="spinner-border spinner-border-sm text-success spinner-loader" role="status" /> :
+                                <p className='admin-txt2'>{baseURI}</p>}
                         </div>
                     </div>
 
                     <div className='admin-options mt-4'>
                         <div className='d-flex'>
-                            <button className='button5'>
+                            <button className='button5' onClick={setPresaleCostHandler}>
                                 Set Presale Cost
                             </button>
-                            <input type='number' className='input1' placeholder='Enter presale cost in ether' />
+                            <input type='number' className='input1' placeholder='Enter presale cost in ether' value={newPresaleCost} onChange={(e) => setNewPresaleCost(e.target.value)} />
                         </div>
                         <div className='d-flex'>
                             <p className='admin-txt1'>Current Cost:</p>
-                            <p className='admin-txt2'>0.02 ether</p>
+                            {loadingData ? <div className="spinner-border spinner-border-sm text-success spinner-loader" role="status" /> :
+                                <p className='admin-txt2'>{presaleCost} Ether</p>}
                         </div>
                     </div>
 
                     <div className='admin-options mt-4'>
                         <div className='d-flex'>
-                            <button className='button5'>
+                            <button className='button5' onClick={setPublicCostHandler}>
                                 Set Public Sale Cost
                             </button>
-                            <input type='number' className='input1' placeholder='Enter public sale cost in ether' />
+                            <input type='number' className='input1' placeholder='Enter public sale cost in ether' value={newPublicCost} onChange={(e) => setNewPublicCost(e.target.value)} />
                         </div>
                         <div className='d-flex'>
                             <p className='admin-txt1'>Current Cost:</p>
-                            <p className='admin-txt2'>0.08 ether</p>
+                            {loadingData ? <div className="spinner-border spinner-border-sm text-success spinner-loader" role="status" /> :
+                                <p className='admin-txt2'>{publicCost} Ether</p>}
                         </div>
                     </div>
 
@@ -98,7 +175,7 @@ const AdminScreen = ({ accountAddress }) => {
                     </div>
                 </div>
 
-                <div className='col-5'>
+                <div className='col-md-5'>
                     <div className='d-flex'>
                         <p className='admin-txt1'>Contract:</p>
                         <p className='admin-txt2'>0x1ceF4Eb1e2A398421073B349CA77D5FAF0d8AcB0</p>
