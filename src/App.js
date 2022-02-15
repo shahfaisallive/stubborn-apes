@@ -73,9 +73,9 @@ function App() {
       accountBalance = web3.utils.fromWei(accountBalance, "Ether");
       setAccountBalance(accountBalance);
 
-      if (accounts[0] === '0x0b7C7Efe2183fEf476b5f86cE53dA612c5dC89b6') {
-        setIsOwner(true)
-      }
+      // if (accounts[0] === '0x0b7C7Efe2183fEf476b5f86cE53dA612c5dC89b6') {
+      //   setIsOwner(true)
+      // }
 
       const networkId = await web3.eth.net.getId();
       const networkData = StubbornApe.networks[networkId]
@@ -87,8 +87,17 @@ function App() {
         );
 
         setApeContract(contract)
+        console.log(contract)
         setContractDetected(true)
-      } 
+
+        const owner = await contract.methods
+          .owner()
+          .call();
+
+        if (accounts[0] === owner) {
+          setIsOwner(true)
+        }
+      }
     }
   };
 

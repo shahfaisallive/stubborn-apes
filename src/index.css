@@ -66,6 +66,20 @@ body{
   color: white;
   background-color:#54A522;
 }
+.button6{
+  height: 30px;
+  width: 100px;
+  border-radius: 5px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #54A522;
+  background-color:#ffffff;
+}
+.button6:hover{
+  background-color:#54A522;
+  color: #ffffff;
+}
 .basic-text1{
   font-size: 16px;
   color: white;
@@ -576,7 +590,7 @@ display: none;
   margin-top: 10px;
   margin-bottom: auto;
   margin-left: 10px;
-  max-width: 75%;
+  max-width: 68%;
 }
 .input1{
   margin-left: 20px;

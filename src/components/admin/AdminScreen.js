@@ -1,24 +1,63 @@
 import React, { useEffect, useState } from 'react';
 import Web3 from 'web3';
+import { HiRefresh } from 'react-icons/hi';
 
 const AdminScreen = ({ accountAddress, contract }) => {
     const [loadingData, setLoadingData] = useState(false)
+    const [owner, setOwner] = useState(null)
     const [paused, setPaused] = useState(null)
     const [baseURI, setBaseURI] = useState('')
     const [publicCost, setPublicCost] = useState(null)
     const [presaleCost, setPresaleCost] = useState(null)
+    const [presaleTime, setPresaleTime] = useState(null)
+    const [publicTime, setPublicTime] = useState(null)
+    const [name, setName] = useState(null)
+    const [symbol, setSymbol] = useState(null)
+    const [totalMinted, setTotalMinted] = useState(null)
+    const [maxSupply, setMaxSupply] = useState(null)
+    const [balance, setBalance] = useState(null)
+    const [refresh, setRefresh] = useState(false)
 
 
     // Input states
     const [newBaseURI, setNewBaseURI] = useState('')
     const [newPresaleCost, setNewPresaleCost] = useState()
     const [newPublicCost, setNewPublicCost] = useState()
+    const [newPresaleTime, setNewPresaleTime] = useState()
+    const [newPublicTime, setNewPublicTime] = useState()
+    const [whitelistAddress, setWhitelistAddress] = useState()
 
 
-
+    // GET DATA FROM BLOCKCHAIN
     useEffect(() => {
         setLoadingData(true)
+
         async function fetchData() {
+            const owner = await contract.methods
+                .owner()
+                .call();
+            setOwner(owner)
+
+            const name = await contract.methods
+                .name()
+                .call();
+            setName(name)
+
+            const symbol = await contract.methods
+                .symbol()
+                .call();
+            setSymbol(symbol)
+
+            const totalMinted = await contract.methods
+                ._mintedItems()
+                .call();
+            setTotalMinted(totalMinted)
+
+            const maxSupply = await contract.methods
+                .MAX_ITEMS()
+                .call();
+            setMaxSupply(maxSupply)
+
             const paused = await contract.methods
                 .paused()
                 .call();
@@ -39,15 +78,28 @@ const AdminScreen = ({ accountAddress, contract }) => {
                 .call();
             setPublicCost(Web3.utils.fromWei(publicCost, 'ether'))
 
+            const presaleTime = await contract.methods
+                .presaleStartTimestamp()
+                .call();
+            setPresaleTime(presaleTime)
 
+            const publicTime = await contract.methods
+                .publicSaleStartTimestamp()
+                .call();
+            setPublicTime(publicTime)
+
+            const balance = await contract.methods
+                .balanceOf(owner)
+                .call();
+            setBalance(Web3.utils.fromWei(balance, 'ether'))
 
             setLoadingData(false)
         }
         fetchData()
-        console.log(paused)
-    }, [paused, baseURI, contract])
+    }, [paused, baseURI, contract, refresh])
 
 
+    // SETTER FUNCTIONS FOR ONLY OWNER
     const pauseContractHandler = async () => {
         await contract.methods
             .pause(!paused)
@@ -72,15 +124,37 @@ const AdminScreen = ({ accountAddress, contract }) => {
             .send({ from: accountAddress })
     }
 
+    const setPresaleTimeHandler = async () => {
+        await contract.methods
+            .setPresaleStartTimestamp(newPresaleTime)
+            .send({ from: accountAddress })
+    }
+
+    const setPublicTimeHandler = async () => {
+        await contract.methods
+            .setPublicSaleStartTimestamp(newPublicTime)
+            .send({ from: accountAddress })
+    }
+
+    const addWhitelistAddressHandler = async () => {
+        await contract.methods
+            .whitelistUser(whitelistAddress)
+            .send({ from: accountAddress })
+    }
+
 
 
     return <div className='container-fluid admin-wrapper'>
         <div className='container'>
             <div className='row d-block justify-content-center mt-5'>
                 <p className='heading1 text-center'>Owner Portal</p>
-                <span className='d-flex justify-content-center'><p className='font-weight-bold text-light'>Owner Address:</p><p className='text-light ml-3'>{accountAddress}</p></span>
+                <span className='d-flex justify-content-center'><p className='font-weight-bold text-light'>Owner Address:</p><p className='text-light ml-3'>{owner}</p></span>
             </div>
 
+
+            {/* CONTRACT SETTER FUNCTIONS SECTION */}
+            {/* CONTRACT SETTER FUNCTIONS SECTION */}
+            {/* CONTRACT SETTER FUNCTIONS SECTION */}
             <div className='row mt-5'>
                 <div className='col-md-7 admin-left' >
                     <div className='admin-options'>
@@ -141,80 +215,97 @@ const AdminScreen = ({ accountAddress, contract }) => {
 
                     <div className='admin-options mt-4'>
                         <div className='d-flex'>
-                            <button className='button5'>
+                            <button className='button5' onClick={setPresaleTimeHandler}>
                                 Set Presale Time
                             </button>
-                            <input type='number' className='input1' placeholder='Enter timestamp e.g 1649959200' />
+                            <input type='number' className='input1' placeholder='Enter timestamp e.g 1649959200' value={newPresaleTime} onChange={(e) => setNewPresaleTime(e.target.value)} />
                         </div>
                         <div className='d-flex'>
                             <p className='admin-txt1'>Current Timestamp:</p>
-                            <p className='admin-txt2'>1649959200</p>
+                            {loadingData ? <div className="spinner-border spinner-border-sm text-success spinner-loader" role="status" /> :
+                                <p className='admin-txt2'>{presaleTime}</p>}
                         </div>
                     </div>
 
                     <div className='admin-options mt-4'>
                         <div className='d-flex'>
-                            <button className='button5'>
+                            <button className='button5' onClick={setPublicTimeHandler}>
                                 Set Public sale Time
                             </button>
-                            <input type='number' className='input1' placeholder='Enter timestamp e.g 1649959200' />
+                            <input type='number' className='input1' placeholder='Enter timestamp e.g 1649959200' value={newPublicTime} onChange={(e) => setNewPublicTime(e.target.value)} />
                         </div>
                         <div className='d-flex'>
                             <p className='admin-txt1'>Current Timestamp:</p>
-                            <p className='admin-txt2'>1649959200</p>
+                            {loadingData ? <div className="spinner-border spinner-border-sm text-success spinner-loader" role="status" /> :
+                                <p className='admin-txt2'>{publicTime}</p>}
                         </div>
                     </div>
 
                     <div className='admin-options mt-4'>
                         <div className='d-flex'>
-                            <button className='button5'>
+                            <button className='button5' onClick={addWhitelistAddressHandler}>
                                 Add Whitelist Address
                             </button>
-                            <input type='text' className='input1' placeholder='0xb221C202cF15E088B5DF9C60A19...' />
+                            <input type='text' className='input1' placeholder='0xb221C202cF15E088B5DF9C60A19...' value={whitelistAddress} onChange={(e) => setWhitelistAddress(e.target.value)} />
                         </div>
                     </div>
                 </div>
 
+
+                {/* CONTRACT INFO SECTION */}
+                {/* CONTRACT INFO SECTION */}
+                {/* CONTRACT INFO SECTION */}
                 <div className='col-md-5'>
+                    <div className='d-flex justify-content-end'>
+                        <button className='button6' onClick={() => setRefresh(!refresh)}><HiRefresh /> Refresh</button>
+                    </div>
+
                     <div className='d-flex'>
                         <p className='admin-txt1'>Contract:</p>
-                        <p className='admin-txt2'>0x1ceF4Eb1e2A398421073B349CA77D5FAF0d8AcB0</p>
+                        {contract ? <p className='admin-txt2'>{contract._address}</p> : <p className='admin-txt2'></p>}
                     </div>
 
                     <div className='d-flex'>
                         <p className='admin-txt1'>Name:</p>
-                        <p className='admin-txt2'>Stubborn Apes</p>
+                        {loadingData ? <div className="spinner-border spinner-border-sm text-success spinner-loader" role="status" /> :
+                            <p className='admin-txt2'>{name}</p>}
                     </div>
 
                     <div className='d-flex'>
                         <p className='admin-txt1'>Symbol:</p>
-                        <p className='admin-txt2'>APE</p>
+                        {loadingData ? <div className="spinner-border spinner-border-sm text-success spinner-loader" role="status" /> :
+                            <p className='admin-txt2'>{symbol}</p>}
                     </div>
 
                     <div className='d-flex'>
                         <p className='admin-txt1'>Total Minted Tokens:</p>
-                        <p className='admin-txt2'>12</p>
+                        {loadingData ? <div className="spinner-border spinner-border-sm text-success spinner-loader" role="status" /> :
+                            <p className='admin-txt2'>{totalMinted}</p>}
                     </div>
 
                     <div className='d-flex'>
                         <p className='admin-txt1'>Max Supply:</p>
-                        <p className='admin-txt2'>10000</p>
+                        {loadingData ? <div className="spinner-border spinner-border-sm text-success spinner-loader" role="status" /> :
+                            <p className='admin-txt2'>{maxSupply}</p>}
                     </div>
 
                     <div className='d-flex'>
                         <p className='admin-txt1'>Presale Cost:</p>
-                        <p className='admin-txt2'>0.02 Ether</p>
+                        {loadingData ? <div className="spinner-border spinner-border-sm text-success spinner-loader" role="status" /> :
+                            <p className='admin-txt2'>{presaleCost} Ether</p>}
                     </div>
 
 
                     <div className='d-flex'>
                         <p className='admin-txt1'>Public Sale cose:</p>
-                        <p className='admin-txt2'>0.08 Ether</p>
+                        {loadingData ? <div className="spinner-border spinner-border-sm text-success spinner-loader" role="status" /> :
+                            <p className='admin-txt2'>{publicCost} Ether</p>}
                     </div>
 
                     <div className='d-flex mt-4'>
                         <p className='admin-txt1'>Balance:</p>
-                        <p className='admin-txt2'>6.0503 Ether</p>
+                        {loadingData ? <div className="spinner-border spinner-border-sm text-success spinner-loader" role="status" /> :
+                            <p className='admin-txt2'>{balance} Ether</p>}
                     </div>
 
 
