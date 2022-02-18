@@ -20,7 +20,7 @@ contract StubbornApe is ERC721Enumerable, Ownable {
     uint public publicSaleStartTimestamp = 1650114000; // 16 April 2022 12 PM EST
 
     // Count values =============================
-    uint256 public MAX_ITEMS = 10000;
+    uint256 public MAX_ITEMS = 7000;
     uint256 public _mintedItems = 0;
     uint256 public maxMintAmount = 10; // Max items per tx
 

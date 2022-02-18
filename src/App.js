@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useTimer } from 'react-timer-hook';
 import Web3 from 'web3';
-import StubbornApe from './abis/StubbornApe.json';
+import StubbornApe from './abis/StubbornApe.json'
 
 
 // Importing components
@@ -79,7 +79,7 @@ function App() {
 
       const networkId = await web3.eth.net.getId();
       const networkData = StubbornApe.networks[networkId]
-
+      console.log(networkData)
       if (networkData) {
         const contract = new web3.eth.Contract(
           StubbornApe.abi,
@@ -93,7 +93,7 @@ function App() {
         const owner = await contract.methods
           .owner()
           .call();
-
+        console.log(owner)
         if (accounts[0] === owner) {
           setIsOwner(true)
         }
