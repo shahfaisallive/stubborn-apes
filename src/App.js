@@ -133,8 +133,8 @@ function App() {
         <Navbar connectToMetamask={connectToMetamask} metamaskConnected={metamaskConnected} accountAddress={accountAddress} isOwner={isOwner} />
         <Routes>
           <Route path="/" element={<LandingPage seconds={seconds} minutes={minutes} hours={hours} days={days} />} />
-          <Route path="/mynfts" element={<MyNFTs />} />
-          <Route path="/nftdetail" element={<NFTDetails seconds={seconds} minutes={minutes} hours={hours} days={days} />} />
+          {/* <Route path="/mynfts" element={<MyNFTs />} /> */}
+          {/* <Route path="/nftdetail" element={<NFTDetails seconds={seconds} minutes={minutes} hours={hours} days={days} />} /> */}
           <Route path="/team" element={<OurTeam />} />
           <Route path="/mintnft" element={<MintNFT />} />
           {isOwner ? <Route path="/admin" element={<AdminScreen accountAddress={accountAddress} contract={apeContract} />} /> : null}
