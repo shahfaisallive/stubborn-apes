@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Banner from '../../media/banner.png'
 
 const Header = ({ days, hours, minutes, seconds }) => {
@@ -14,9 +15,11 @@ const Header = ({ days, hours, minutes, seconds }) => {
                     <button className='button1 mr-2' id='headerbtn1'>
                         View on Opensea
                     </button>
-                    <button className='button2 ml-2' id='headerbtn2'>
-                        Mint Now
-                    </button>
+                    <Link to='/mintnft'>
+                        <button className='button2 ml-2' id='headerbtn2'>
+                            Mint Now
+                        </button>
+                    </Link>
                 </div>
 
                 <p className='heading1 text-center mt-5'>PRESALE STARTS IN</p>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { ReactComponent as ArrowIcon } from '../../media/arrow.svg'
+import { Link } from 'react-router-dom'
 
 const Specs = () => {
     return (
@@ -18,9 +19,11 @@ const Specs = () => {
                         <p className='basic-text1'><ArrowIcon className='arrow-icon' />One Lucky Winner wins $10,000</p>
                     </div>
 
-                    <button className='button2 mt-5'>
-                        Mint Now
-                    </button>
+                    <Link to='/mintnft'>
+                        <button className='button2 mt-5'>
+                            Mint Now
+                        </button>
+                    </Link>
                 </div>
             </div>
         </div>

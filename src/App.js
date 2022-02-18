@@ -13,6 +13,8 @@ import NFTDetails from './components/nfts/NFTDetails';
 import OurTeam from './components/OurTeam';
 import Footer from './components/Footer';
 import AdminScreen from './components/admin/AdminScreen';
+import MintNFT from './components/nfts/MintNFT';
+
 
 function App() {
   // STATES FOR WEB3 AND CONTRACT INTEGRATION
@@ -134,6 +136,7 @@ function App() {
           <Route path="/mynfts" element={<MyNFTs />} />
           <Route path="/nftdetail" element={<NFTDetails seconds={seconds} minutes={minutes} hours={hours} days={days} />} />
           <Route path="/team" element={<OurTeam />} />
+          <Route path="/mintnft" element={<MintNFT />} />
           {isOwner ? <Route path="/admin" element={<AdminScreen accountAddress={accountAddress} contract={apeContract} />} /> : null}
         </Routes>
         <Footer />
