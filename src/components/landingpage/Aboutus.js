@@ -27,12 +27,12 @@ const Aboutus = () => {
                 <div className='col-md-6 aboutus-right'>
                     <div className='row'>
                         <div className='col-6 pt-5'>
-                            <img src={'/images/variant_1.png'} alt='ape' className="aboutus-apes mt-3" />
-                            <img src={'/images/variant_10.png'} alt='ape' className="aboutus-apes mt-4" />
+                            <img src={'/images/Variant_1.png'} alt='ape' className="aboutus-apes mt-3" />
+                            <img src={'/images/Variant_10.png'} alt='ape' className="aboutus-apes mt-4" />
                         </div>
                         <div className='col-6'>
-                            <img src={'/images/variant_9.png'} alt='ape' className="aboutus-apes" />
-                            <img src={'/images/variant_7.png'} alt='ape' className="aboutus-apes mt-4" />
+                            <img src={'/images/Variant_9.png'} alt='ape' className="aboutus-apes" />
+                            <img src={'/images/Variant_7.png'} alt='ape' className="aboutus-apes mt-4" />
                         </div>
                     </div>
                 </div>
