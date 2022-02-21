@@ -42,11 +42,11 @@ module.exports = {
 
   networks: {
 
-    development: {
-      host: "127.0.0.1",
-      port: 7545,
-      network_id: "*", // Match any network id
-    },
+    // development: {
+    //   host: "127.0.0.1",
+    //   port: 7545,
+    //   network_id: "*", // Match any network id
+    // },
 
     // Useful for testing. The `development` name is special - truffle uses it by default
     // if it's defined here and no other network is specified at the command line.
@@ -89,19 +89,19 @@ module.exports = {
     //   // gasPrice: 10000000000,
     // }
 
-    // rinkeby: {
-    //   provider: () => new HDWalletProvider({
-    //     privateKeys: private_keys,
-    //     providerOrUrl: `wss://rinkeby.infura.io/ws/v3/${projectId}`,
-    //     numberOfAddresses: 2
-    //   }),
-    //   network_id: 4,
-    //   gas: 5500000,
-    //   // gasPrice: 13149603593,
-    //   confirmations: 2,
-    //   timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
-    //   skipDryRun: true
-    // }
+    rinkeby: {
+      provider: () => new HDWalletProvider({
+        privateKeys: private_keys,
+        providerOrUrl: `wss://rinkeby.infura.io/ws/v3/${projectId}`,
+        numberOfAddresses: 2
+      }),
+      network_id: 4,
+      gas: 5500000,
+      // gasPrice: 13149603593,
+      confirmations: 2,
+      timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+      skipDryRun: true
+    }
 
     // Useful for private networks
     // private: {
@@ -122,7 +122,7 @@ module.exports = {
   // Configure your compilers
   compilers: {
     solc: {
-      version: "0.8.6",    // Fetch exact version from solc-bin (default: truffle's version)
+      version: "0.8.7",    // Fetch exact version from solc-bin (default: truffle's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
       // settings: {          // See the solidity docs for advice about optimization and evmVersion
       optimizer: {

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.6;
+pragma solidity ^0.8.7;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -37,7 +37,7 @@ contract StubbornApe is ERC721Enumerable, Ownable {
     );
 
     constructor(
-    ) ERC721('Stubborn Apes', 'APE') {
+    ) ERC721('Stubborn Apes', 'STUBS') {
         setBaseURI("https://gateway.pinata.cloud/ipfs/QmWYUdDwvm2dTpNRU1kbyHizVmZyg9eGpW9W51HbTwD2XK");
     }
 
