@@ -286,6 +286,7 @@ body{
 .aboutus-apes{
   width: 93%;
   margin-left: 20px;
+  border-radius: 15px;
 }
 
 .about-stats-div{
@@ -598,6 +599,9 @@ display: none;
   font-size: 16px;
   margin-top: -10px;
   color: #54A522;
+}
+.team-img{
+  border-radius: 15px;
 }
 
 

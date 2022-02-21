@@ -31,8 +31,8 @@ const Aboutus = () => {
                             <img src={'/images/Variant_10.png'} alt='ape' className="aboutus-apes mt-4" />
                         </div>
                         <div className='col-6'>
-                            <img src={'/images/Variant_9.png'} alt='ape' className="aboutus-apes" />
-                            <img src={'/images/Variant_7.png'} alt='ape' className="aboutus-apes mt-4" />
+                            <img src={'/images/Variant_5.png'} alt='ape' className="aboutus-apes" />
+                            <img src={'/images/Variant_6.png'} alt='ape' className="aboutus-apes mt-4" />
                         </div>
                     </div>
                 </div>

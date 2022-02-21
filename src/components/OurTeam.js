@@ -17,10 +17,10 @@ const OurTeam = () => {
                 <div className='row d-flex justify-content-center mt-5'>
                     <div className='col'>
                         <div className="card">
-                            <img className="card-img-top" src={'/images/man.png'} alt="team member" />
+                            <img className="card-img-top team-img" src={'/images/Variant_1.png'} alt="team member" />
                             <div className="card-body">
                                 <div className='row d-flex justify-content-center'>
-                                    <p className="card-title team-text1 text-center">Carter</p>
+                                    <p className="card-title team-text1 text-center">Andrew</p>
                                 </div>
                                 <div className='row d-flex justify-content-center'>
                                     <p className="team-text2 text-center">Director</p>
@@ -31,7 +31,7 @@ const OurTeam = () => {
 
                     <div className='col'>
                         <div className="card">
-                            <img className="card-img-top" src={'/images/man.png'} alt="ape" />
+                            <img className="card-img-top team-img" src={'/images/Variant_9_blue.png'} alt="ape" />
                             <div className="card-body">
                                 <div className='row d-flex justify-content-center'>
                                     <p className="card-title team-text1 text-center">Carter</p>
@@ -45,10 +45,10 @@ const OurTeam = () => {
 
                     <div className='col'>
                         <div className="card">
-                            <img className="card-img-top" src={'/images/man.png'} alt="ape" />
+                            <img className="card-img-top team-img" src={'/images/Variant_2.png'} alt="ape" />
                             <div className="card-body">
                                 <div className='row d-flex justify-content-center'>
-                                    <p className="card-title team-text1 text-center">Carter</p>
+                                    <p className="card-title team-text1 text-center">Nauman</p>
                                 </div>
                                 <div className='row d-flex justify-content-center'>
                                     <p className="team-text2 text-center">Design</p>
@@ -59,10 +59,10 @@ const OurTeam = () => {
 
                     <div className='col'>
                         <div className="card">
-                            <img className="card-img-top" src={'/images/man.png'} alt="ape" />
+                            <img className="card-img-top team-img" src={'/images/Variant_9.png'} alt="ape" />
                             <div className="card-body">
                                 <div className='row d-flex justify-content-center'>
-                                    <p className="card-title team-text1 text-center">Carter</p>
+                                    <p className="card-title team-text1 text-center">Ahmad</p>
                                 </div>
                                 <div className='row d-flex justify-content-center'>
                                     <p className="team-text2 text-center">Development</p>
