@@ -24,12 +24,13 @@ function App() {
   const [contractDetected, setContractDetected] = useState(false)
   const [accountBalance, setAccountBalance] = useState('')
   const [isOwner, setIsOwner] = useState(false)
+  const [publicCost, setPublicCost] = useState(null)
+  const [presaleCost, setPresaleCost] = useState(null)
 
   // STATES FOR RELEASE TIMER
   const [saleCounterTime, setSaleCounterTime] = useState(new Date("2022-04-14T17:00:00.000-05:00"))
   const [presaleExpired, setPresaleExpired] = useState(false)
   const [expiryTime, setExpiryTime] = useState(0)
-
   const expiryTimestamp = new Date("2022-04-14T17:00:00.000-05:00")
   const exp = expiryTimestamp.setSeconds(expiryTime);
 
@@ -99,6 +100,16 @@ function App() {
         if (accounts[0] === owner) {
           setIsOwner(true)
         }
+
+        const presaleCost = await apeContract.methods
+          .presaleCost()
+          .call();
+        setPresaleCost(Web3.utils.fromWei(presaleCost, 'ether'))
+
+        const publicCost = await apeContract.methods
+          .publicSaleCost()
+          .call();
+        setPublicCost(Web3.utils.fromWei(publicCost, 'ether'))
       }
     }
   };
@@ -132,11 +143,11 @@ function App() {
       <BrowserRouter>
         <Navbar connectToMetamask={connectToMetamask} metamaskConnected={metamaskConnected} accountAddress={accountAddress} isOwner={isOwner} />
         <Routes>
-          <Route path="/" element={<LandingPage seconds={seconds} minutes={minutes} hours={hours} days={days} />} />
-          {/* <Route path="/mynfts" element={<MyNFTs />} /> */}
-          {/* <Route path="/nftdetail" element={<NFTDetails seconds={seconds} minutes={minutes} hours={hours} days={days} />} /> */}
+          <Route path="/" element={<LandingPage seconds={seconds} minutes={minutes} hours={hours} days={days} publicCost={publicCost} presaleCost={presaleCost} />} />
+          <Route path="/mynfts" element={<MyNFTs />} />
+          <Route path="/nftdetail" element={<NFTDetails seconds={seconds} minutes={minutes} hours={hours} days={days} />} />
           <Route path="/team" element={<OurTeam />} />
-          <Route path="/mintnft" element={<MintNFT />} />
+          <Route path="/mintnft" element={<MintNFT contract={apeContract} publicCost={publicCost} presaleCost={presaleCost} accountAddress={accountAddress} presaleExpired={presaleExpired} />} />
           {isOwner ? <Route path="/admin" element={<AdminScreen accountAddress={accountAddress} contract={apeContract} />} /> : null}
         </Routes>
         <Footer />

@@ -1,22 +1,50 @@
-import React from 'react'
-import MintBg from '../../media/banner.png'
+import React, { useEffect, useState } from 'react'
 
-const MintNFT = () => {
+const MintNFT = ({ accountAddress, contract, presaleCost, publicCost, presaleExpired }) => {
+    const [totalMinted, setTotalMinted] = useState(null)
+    const [maxSupply, setMaxSupply] = useState(null)
+
+    useEffect(() => {
+        async function fetchData() {
+
+            const totalMinted = await contract.methods
+                ._mintedItems()
+                .call();
+            setTotalMinted(totalMinted)
+
+            const maxSupply = await contract.methods
+                .MAX_ITEMS()
+                .call();
+            setMaxSupply(maxSupply)
+        }
+        fetchData()
+    }, [contract])
+
     return (
         <div className='mintnft-wrapper container-fluid d-flex justify-content-center'>
             <div className='row container'>
                 <div className='col-md-6 mintnft-left'>
                     <p className='heading1 text-center'>MINT YOUR NFT</p>
                     <div className='mint-box mt-5'>
-                        <p className='mint-text1 text-center'>0/7000</p>
-                        <p className='mint-text2 text-center'>0x0b7C7Efe2183fEf476b5f86cE53dA612c5dC89b6</p>
-                        <p className='mint-text3 text-center mt-5'>1 Stubborn Ape 0.08 ETH.</p>
+                        <div className='row d-flex justify-content-center'>
+                            {!totalMinted || !maxSupply ? <div className="spinner-border spinner-border mb-4 text-success spinner-loader" role="status" /> :
+                                <p className='mint-text1 text-center'>{totalMinted}/{maxSupply}</p>}
+                        </div>
+
+                        <p className='mint-text2 text-center'>{accountAddress}</p>
+                        {presaleExpired ? <p className='mint-text3 text-center mt-5'>1 Stubborn Ape is {presaleCost} ETH.</p> :
+                            !presaleExpired ? <p className='mint-text3 text-center mt-5'>Presale not active yet</p> :
+                                <p className='mint-text3 text-center mt-5'>{publicCost}</p>}
+
                         <p className='mint-text2 text-center'>Excluding gas fees</p>
 
                         <div className='row d-flex justify-content-center'>
-                            <button className='button2 mt-3'>
-                                Mint an Ape
-                            </button>
+                            {presaleExpired ? <button className='button2 mt-3'>
+                                Mint
+                            </button> :
+                                <button className='button2 mt-3 opacity-50 border bg-success' disabled>
+                                    Mint
+                                </button>}
                         </div>
                     </div>
 

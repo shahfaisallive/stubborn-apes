@@ -13,9 +13,6 @@ import { ReactComponent as Line2 } from '../../media/line2.svg'
 import { ReactComponent as Line3 } from '../../media/line3.svg'
 
 
-
-
-
 const Roadmap = () => {
     return (
         <div className='container-fluid roadmap-wrapper justify-content-center d-flex' id='roadmap'>

@@ -16,8 +16,8 @@ contract StubbornApe is ERC721Enumerable, Ownable {
     uint256 public publicSaleCost = 0.08 ether;
 
     // Sale dates ===============================
-    uint public presaleStartTimestamp = 1649959200; // 14 April 2022 5 PM EST
-    uint public publicSaleStartTimestamp = 1650114000; // 16 April 2022 12 PM EST
+    uint256 public presaleStartTimestamp = 1649959200; // 14 April 2022 5 PM EST
+    uint256 public publicSaleStartTimestamp = 1650114000; // 16 April 2022 12 PM EST
 
     // Count values =============================
     uint256 public MAX_ITEMS = 7000;
@@ -28,17 +28,15 @@ contract StubbornApe is ERC721Enumerable, Ownable {
 
     // Lists ====================================
     mapping(address => bool) public whitelisted;
-    mapping(address => uint) public presaleWallets;
+    mapping(address => uint256) public presaleWallets;
 
     // Events ===================================
-    event PublicSaleMint(
-        address indexed _from,
-        uint indexed _tokenId
-    );
+    event PublicSaleMint(address indexed _from, uint256 indexed _tokenId);
 
-    constructor(
-    ) ERC721('Stubborn Apes', 'STUBS') {
-        setBaseURI("https://gateway.pinata.cloud/ipfs/QmWYUdDwvm2dTpNRU1kbyHizVmZyg9eGpW9W51HbTwD2XK");
+    constructor() ERC721("Stubborn Apes", "STUBS") {
+        setBaseURI(
+            "https://gateway.pinata.cloud/ipfs/QmWYUdDwvm2dTpNRU1kbyHizVmZyg9eGpW9W51HbTwD2XK"
+        );
     }
 
     function _baseURI() internal view virtual override returns (string memory) {
@@ -46,21 +44,30 @@ contract StubbornApe is ERC721Enumerable, Ownable {
     }
 
     // Presale Minting ============================
-     function presaleMint() public payable {
+    function presaleMint() public payable {
         require(!paused, "Contract is paused!");
-        require(block.timestamp >= presaleStartTimestamp, "Presale is not opened yet");
-        require(block.timestamp <= publicSaleStartTimestamp, "Not in presale period");
-        uint remainder = msg.value % presaleCost;
-        uint _mintAmount = msg.value / presaleCost;
+        require(
+            block.timestamp >= presaleStartTimestamp,
+            "Presale time is not active yet"
+        );
+        require(
+            block.timestamp <= publicSaleStartTimestamp,
+            "Current period is not within presale time"
+        );
+        uint256 remainder = msg.value % presaleCost;
+        uint256 _mintAmount = msg.value / presaleCost;
         require(remainder == 0, "Send a divisible amount of price");
-        require(_mintedItems.add(_mintAmount) <= MAX_ITEMS, "Purchase would not exceed max supply");
+        require(
+            _mintedItems.add(_mintAmount) <= MAX_ITEMS,
+            "Purchase would exceed max supply"
+        );
         require(_mintAmount <= maxMintAmount, "Over the maxMintAmount");
         require(whitelisted[msg.sender] == true, "You need to be in whitelist");
         require(presaleWallets[msg.sender] <= 10, "Max 10 items per wallet");
 
         if (msg.sender != owner()) {
-            for (uint i = 0; i < _mintAmount; i++) {
-                uint mintIndex = _mintedItems;
+            for (uint256 i = 0; i < _mintAmount; i++) {
+                uint256 mintIndex = _mintedItems;
                 require(_mintedItems <= MAX_ITEMS, "All items sold!");
                 _safeMint(msg.sender, mintIndex);
                 _mintedItems++;
@@ -70,50 +77,79 @@ contract StubbornApe is ERC721Enumerable, Ownable {
     }
 
     // Public sale Minting =================================
-     function publicSaleMint() public payable {
+    function publicSaleMint() public payable {
         require(!paused, "Contract is paused");
-        require(block.timestamp >= publicSaleStartTimestamp, "Public sale is not opened yet");
-        uint remainder = msg.value % publicSaleCost;
-        uint _mintAmount = msg.value / publicSaleCost;
+        require(
+            block.timestamp >= publicSaleStartTimestamp,
+            "Public sale time is not active yet"
+        );
+        uint256 remainder = msg.value % publicSaleCost;
+        uint256 _mintAmount = msg.value / publicSaleCost;
         require(remainder == 0, "Send a divisible amount of price");
-        require(_mintedItems.add(_mintAmount) <= MAX_ITEMS, "Purchase would  not exceed max supply of Basic Apes");
+        require(
+            _mintedItems.add(_mintAmount) <= MAX_ITEMS,
+            "Purchase would exceed max supply"
+        );
         require(_mintAmount <= maxMintAmount, "Over the maxMintAmount");
 
         if (msg.sender != owner()) {
-            for (uint i = 0; i < _mintAmount; i++) {
-                uint mintIndex = _mintedItems;
+            for (uint256 i = 0; i < _mintAmount; i++) {
+                uint256 mintIndex = _mintedItems;
                 require(_mintedItems <= MAX_ITEMS, "All items sold!");
                 _safeMint(msg.sender, mintIndex);
                 emit PublicSaleMint(msg.sender, mintIndex);
                 _mintedItems++;
-            }}
+            }
+        }
     }
 
+    // Admin Minting (Mint by owner) =========================
+    function ownerMint(uint256 _mintAmount) public payable onlyOwner {
+        require(!paused, "Contract is paused");
+        require(
+            _mintedItems.add(_mintAmount) <= MAX_ITEMS,
+            "Purchase would exceed max supply"
+        );
+        require(_mintAmount <= maxMintAmount, "Over the maxMintAmount");
+
+        for (uint256 i = 0; i < _mintAmount; i++) {
+            uint256 mintIndex = _mintedItems;
+            require(_mintedItems <= MAX_ITEMS, "All items sold!");
+            _safeMint(msg.sender, mintIndex);
+            _mintedItems++;
+        }
+    }
 
     // Get MetaData TokenURI =======================
     function tokenURI(uint256 tokenId)
-    public
-    view
-    virtual
-    override
-    returns (string memory)
+        public
+        view
+        virtual
+        override
+        returns (string memory)
     {
         require(
             _exists(tokenId),
             "ERC721Metadata: URI query for nonexistent token"
         );
         string memory currentBaseURI = _baseURI();
-        return bytes(currentBaseURI).length > 0
-        ? string(abi.encodePacked(currentBaseURI, tokenId.toString()))
-        : "";
+        return
+            bytes(currentBaseURI).length > 0
+                ? string(abi.encodePacked(currentBaseURI, tokenId.toString()))
+                : "";
     }
 
-
-    function setPresaleStartTimestamp(uint _startTimestamp) external onlyOwner {
+    function setPresaleStartTimestamp(uint256 _startTimestamp)
+        external
+        onlyOwner
+    {
         presaleStartTimestamp = _startTimestamp;
     }
 
-    function setPublicSaleStartTimestamp(uint _startTimestamp) external onlyOwner {
+    function setPublicSaleStartTimestamp(uint256 _startTimestamp)
+        external
+        onlyOwner
+    {
         publicSaleStartTimestamp = _startTimestamp;
     }
 
@@ -145,22 +181,28 @@ contract StubbornApe is ERC721Enumerable, Ownable {
         whitelisted[_user] = false;
     }
 
-    function presaleUser(address _user, uint _amount) internal {
+    function presaleUser(address _user, uint256 _amount) internal {
         presaleWallets[_user] = _amount;
     }
 
-    function getMintedCountByPresaledUser(address _user) public view virtual returns (uint) {
+    function getMintedCountByPresaledUser(address _user)
+        public
+        view
+        virtual
+        returns (uint256)
+    {
         return presaleWallets[_user];
     }
 
-    function removePresaleUser(address _user, uint _amount) external onlyOwner {
+    function removePresaleUser(address _user, uint256 _amount)
+        external
+        onlyOwner
+    {
         presaleWallets[_user] = _amount;
     }
 
     function withdraw() external onlyOwner {
-        (bool success,) = owner().call{value : address(this).balance}("");
+        (bool success, ) = owner().call{value: address(this).balance}("");
         require(success, "Failed to withdraw");
-    } 
-
-
+    }
 }

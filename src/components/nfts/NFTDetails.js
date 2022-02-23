@@ -20,7 +20,7 @@ const NFTDetails = ({ days, hours, minutes, seconds }) => {
 
                 <div className='row mt-3 d-flex'>
                     <div className='col-md-4'>
-                        <img src={'/images/blue-ape.png'} alt='ape' />
+                        <img src={'/images/Variant_2.png'} className="nft-detail-img" alt='ape' />
                         <div className='row mt-4'>
                             <div className='details-timer-div'>
                                 <div className='text-center'>
