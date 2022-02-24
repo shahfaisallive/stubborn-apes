@@ -81,8 +81,8 @@ function App() {
       // }
 
       const networkId = await web3.eth.net.getId();
+      console.log('network Id:', networkId)
       const networkData = StubbornApe.networks[networkId]
-      console.log(networkData)
       if (networkData) {
         const contract = new web3.eth.Contract(
           StubbornApe.abi,
@@ -90,13 +90,12 @@ function App() {
         );
 
         setApeContract(contract)
-        console.log(contract)
         setContractDetected(true)
 
         const owner = await contract.methods
           .owner()
           .call();
-        console.log(owner)
+        // console.log(owner)
         if (accounts[0] === owner) {
           setIsOwner(true)
         }
@@ -132,7 +131,7 @@ function App() {
       await loadWeb3();
       await loadBlockchainData();
       // console.log(isOwner);
-      console.log(accountAddress);
+      console.log('account Address:', accountAddress);
     }
     fetchData();
   }, [saleCounterTime, metamaskConnected, contractDetected])

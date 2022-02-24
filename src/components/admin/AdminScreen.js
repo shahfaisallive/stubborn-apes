@@ -6,7 +6,9 @@ const AdminScreen = ({ accountAddress, contract }) => {
     const [loadingData, setLoadingData] = useState(false)
     const [owner, setOwner] = useState(null)
     const [paused, setPaused] = useState(null)
+    const [revealed, setRevealed] = useState(null)
     const [baseURI, setBaseURI] = useState('')
+    const [unrevealedURI, setUnrevealedURI] = useState('')
     const [publicCost, setPublicCost] = useState(null)
     const [presaleCost, setPresaleCost] = useState(null)
     const [presaleTime, setPresaleTime] = useState(null)
@@ -21,11 +23,13 @@ const AdminScreen = ({ accountAddress, contract }) => {
 
     // Input states
     const [newBaseURI, setNewBaseURI] = useState('')
+    const [newUnrevealedURI, setNewUnrevealedURI] = useState('')
     const [newPresaleCost, setNewPresaleCost] = useState()
     const [newPublicCost, setNewPublicCost] = useState()
     const [newPresaleTime, setNewPresaleTime] = useState()
     const [newPublicTime, setNewPublicTime] = useState()
     const [whitelistAddress, setWhitelistAddress] = useState()
+    const [mintAmount, setMintAmount] = useState(0)
 
 
     // GET DATA FROM BLOCKCHAIN
@@ -63,10 +67,20 @@ const AdminScreen = ({ accountAddress, contract }) => {
                 .call();
             setPaused(paused)
 
+            const revealed = await contract.methods
+                .revealed()
+                .call();
+            setRevealed(revealed)
+
             const baseURI = await contract.methods
                 .baseURI()
                 .call();
             setBaseURI(baseURI)
+
+            const unrevealedURI = await contract.methods
+                .notRevealedUri()
+                .call();
+            setUnrevealedURI(unrevealedURI)
 
             const presaleCost = await contract.methods
                 .presaleCost()
@@ -106,11 +120,24 @@ const AdminScreen = ({ accountAddress, contract }) => {
             .send({ from: accountAddress })
     }
 
+    const revealMetadataHandler = async () => {
+        await contract.methods
+            .reveal(!revealed)
+            .send({ from: accountAddress })
+    }
+
     const setBaseURIHandler = async () => {
         await contract.methods
             .setBaseURI(newBaseURI)
             .send({ from: accountAddress })
     }
+
+    const setUnrevealedURIHandler = async () => {
+        await contract.methods
+            .setNotRevealedURI(newUnrevealedURI)
+            .send({ from: accountAddress })
+    }
+
 
     const setPresaleCostHandler = async () => {
         await contract.methods
@@ -142,6 +169,19 @@ const AdminScreen = ({ accountAddress, contract }) => {
             .send({ from: accountAddress })
     }
 
+    const withdrawHandler = async () => {
+        await contract.methods
+            .withdraw()
+            .call()
+    }
+
+    const adminMintHandler = async () => {
+        setMintAmount(0)
+
+        await contract.methods
+            .ownerMint(mintAmount)
+            .send({ from: accountAddress, value: 5000000000000000000 })
+    }
 
 
     return <div className='container-fluid admin-wrapper'>
@@ -181,6 +221,20 @@ const AdminScreen = ({ accountAddress, contract }) => {
                             <p className='admin-txt1'>Current URI:</p>
                             {loadingData ? <div className="spinner-border spinner-border-sm text-success spinner-loader" role="status" /> :
                                 <p className='admin-txt2'>{baseURI}</p>}
+                        </div>
+                    </div>
+
+                    <div className='admin-options mt-4'>
+                        <div className='d-flex'>
+                            <button className='button5' onClick={setUnrevealedURIHandler}>
+                                Set Unrevealed URI
+                            </button>
+                            <input type='text' className='input1' placeholder='Set your unrevealed URI' value={newUnrevealedURI} onChange={(e) => setNewUnrevealedURI(e.target.value)} />
+                        </div>
+                        <div className='d-flex'>
+                            <p className='admin-txt1'>Current URI:</p>
+                            {loadingData ? <div className="spinner-border spinner-border-sm text-success spinner-loader" role="status" /> :
+                                <p className='admin-txt2'>{unrevealedURI}</p>}
                         </div>
                     </div>
 
@@ -297,9 +351,23 @@ const AdminScreen = ({ accountAddress, contract }) => {
 
 
                     <div className='d-flex'>
-                        <p className='admin-txt1'>Public Sale cose:</p>
+                        <p className='admin-txt1'>Public Sale Cost:</p>
                         {loadingData ? <div className="spinner-border spinner-border-sm text-success spinner-loader" role="status" /> :
                             <p className='admin-txt2'>{publicCost} Ether</p>}
+                    </div>
+
+                    <div className='d-flex mt-4'>
+                        <p className='admin-txt1'>Metadata Revealed:</p>
+                        {loadingData ? <div className="spinner-border spinner-border-sm text-success spinner-loader" role="status" /> :
+                            <p className='admin-txt2'>{revealed ? 'True' : 'False'}</p>}
+                    </div>
+
+                    <div className='admin-options mt-2'>
+                        <div className='d-flex'>
+                            <button className='button5' onClick={revealMetadataHandler}>
+                                <b>REVEAL METADATA</b>
+                            </button>
+                        </div>
                     </div>
 
                     <div className='d-flex mt-4'>
@@ -311,11 +379,37 @@ const AdminScreen = ({ accountAddress, contract }) => {
 
                     <div className='admin-options mt-2'>
                         <div className='d-flex'>
-                            <button className='button5'>
-                                Withdraw
+                            <button className='button5' onClick={withdrawHandler}>
+                                <b>WITHDRAW</b>
                             </button>
                         </div>
                     </div>
+
+                    <hr className='mt-5 border border-light'></hr>
+
+                    <div className='admin-options justify-content-center mt-5'>
+                        <p className='admin-txt3 text-center'>MINT BY ADMIN</p>
+                        <p className='text-center text-light'>Mint by paying only gas fees</p>
+                    </div>
+
+                    <div className='admin-options mt-4'>
+                        <div className='d-flex justify-content-center'>
+                            <button className='button7 mr-5' onClick={() => { mintAmount > 0 ? setMintAmount(mintAmount - 1) : console.log('Negative mint amount not allowed') }}>
+                                <b>-</b>
+                            </button>
+                            <button className='button5' style={{ backgroundColor: 'red' }} onClick={adminMintHandler}>
+                                <b>MINT</b>
+                            </button>
+                            <button className='button7 ml-5' onClick={() => { setMintAmount(mintAmount + 1) }}>
+                                <b>+</b>
+                            </button>
+                        </div>
+                        <div className='d-flex justify-content-center'>
+                            <p className='text-white mt-3'>Mint Amount:</p>
+                            <p className='text-white ml-2 mt-3'>{mintAmount}</p>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>

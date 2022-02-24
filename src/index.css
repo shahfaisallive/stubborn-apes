@@ -66,6 +66,10 @@ body{
   color: white;
   background-color:#54A522;
 }
+.button5:hover{
+  background-color: #2f640e;
+}
+
 .button6{
   height: 30px;
   width: 100px;
@@ -79,6 +83,19 @@ body{
 .button6:hover{
   background-color:#54A522;
   color: #ffffff;
+}
+.button7{
+  height: 40px;
+  width: 40px;
+  border-radius: 360px;
+  border: none;
+  font-size: 15px;
+  font-weight: 500;
+  color: white;
+  background-color:#54A522;
+}
+.button7:hover{
+  background-color: #2f640e;
 }
 .basic-text1{
   font-size: 16px;
@@ -635,6 +652,11 @@ display: none;
   margin-bottom: auto;
   margin-left: 10px;
   max-width: 68%;
+}
+.admin-txt3{
+  font-size: 24px;
+  color: white;
+  font-weight: 700;
 }
 .input1{
   margin-left: 20px;

@@ -25,6 +25,8 @@ contract StubbornApe is ERC721Enumerable, Ownable {
     uint256 public maxMintAmount = 10; // Max items per tx
 
     bool public paused = false;
+    string public notRevealedUri;
+    bool public revealed = false;
 
     // Lists ====================================
     mapping(address => bool) public whitelisted;
@@ -35,7 +37,10 @@ contract StubbornApe is ERC721Enumerable, Ownable {
 
     constructor() ERC721("Stubborn Apes", "STUBS") {
         setBaseURI(
-            "https://gateway.pinata.cloud/ipfs/QmWYUdDwvm2dTpNRU1kbyHizVmZyg9eGpW9W51HbTwD2XK"
+            "https://gateway.pinata.cloud/ipfs/QmWYUdDwvm2dTpNRU1kbyHizVmZyg9eGpW9W51HbTwD2XK/"
+        );
+        setNotRevealedURI(
+            "https://gateway.pinata.cloud/ipfs/QmT3BqqHE3TmZDp76EtX4WbdHhwE4HgRmYntzzbmGGuJhg"
         );
     }
 
@@ -67,8 +72,8 @@ contract StubbornApe is ERC721Enumerable, Ownable {
 
         if (msg.sender != owner()) {
             for (uint256 i = 0; i < _mintAmount; i++) {
-                uint256 mintIndex = _mintedItems;
-                require(_mintedItems <= MAX_ITEMS, "All items sold!");
+                uint256 mintIndex = _mintedItems + 1;
+                require(_mintedItems < MAX_ITEMS, "All items sold!");
                 _safeMint(msg.sender, mintIndex);
                 _mintedItems++;
             }
@@ -94,8 +99,8 @@ contract StubbornApe is ERC721Enumerable, Ownable {
 
         if (msg.sender != owner()) {
             for (uint256 i = 0; i < _mintAmount; i++) {
-                uint256 mintIndex = _mintedItems;
-                require(_mintedItems <= MAX_ITEMS, "All items sold!");
+                uint256 mintIndex = _mintedItems + 1;
+                require(_mintedItems < MAX_ITEMS, "All items sold!");
                 _safeMint(msg.sender, mintIndex);
                 emit PublicSaleMint(msg.sender, mintIndex);
                 _mintedItems++;
@@ -113,8 +118,8 @@ contract StubbornApe is ERC721Enumerable, Ownable {
         require(_mintAmount <= maxMintAmount, "Over the maxMintAmount");
 
         for (uint256 i = 0; i < _mintAmount; i++) {
-            uint256 mintIndex = _mintedItems;
-            require(_mintedItems <= MAX_ITEMS, "All items sold!");
+            uint256 mintIndex = _mintedItems + 1;
+            require(_mintedItems < MAX_ITEMS, "All items sold!");
             _safeMint(msg.sender, mintIndex);
             _mintedItems++;
         }
@@ -132,13 +137,35 @@ contract StubbornApe is ERC721Enumerable, Ownable {
             _exists(tokenId),
             "ERC721Metadata: URI query for nonexistent token"
         );
+
+        if (revealed == false) {
+            return notRevealedUri;
+        }
+
         string memory currentBaseURI = _baseURI();
         return
             bytes(currentBaseURI).length > 0
-                ? string(abi.encodePacked(currentBaseURI, tokenId.toString()))
+                ? string(
+                    abi.encodePacked(
+                        currentBaseURI,
+                        tokenId.toString(),
+                        ".json"
+                    )
+                )
                 : "";
     }
 
+    // Reveal Metadata of Tokens =======================
+    function reveal(bool _state) public onlyOwner {
+        revealed = _state;
+    }
+
+    // Set Placeholder metadata URI =======================
+    function setNotRevealedURI(string memory _notRevealedURI) public {
+        notRevealedUri = _notRevealedURI;
+    }
+
+    // Set Presale timestamp, (input: timestamp in UTC) =======================
     function setPresaleStartTimestamp(uint256 _startTimestamp)
         external
         onlyOwner
@@ -146,6 +173,7 @@ contract StubbornApe is ERC721Enumerable, Ownable {
         presaleStartTimestamp = _startTimestamp;
     }
 
+    // Set public timestamp (input: timestamp in UTC) =======================
     function setPublicSaleStartTimestamp(uint256 _startTimestamp)
         external
         onlyOwner
@@ -153,38 +181,47 @@ contract StubbornApe is ERC721Enumerable, Ownable {
         publicSaleStartTimestamp = _startTimestamp;
     }
 
+    // Set Presale cost for token in ether =======================
     function setPresaleCost(uint256 _newCost) public onlyOwner {
         presaleCost = _newCost;
     }
 
+    // Set public sale cost for token in ether =======================
     function setPublicSaleCost(uint256 _newCost) public onlyOwner {
         publicSaleCost = _newCost;
     }
 
+    // Set max mint limit for single transaction at a time =======================
     function setMaxMintAmount(uint256 _maxItemsPerTx) public onlyOwner {
         maxMintAmount = _maxItemsPerTx;
     }
 
+    // Set base URI of metadata (an IPFS URL) =======================
     function setBaseURI(string memory _newBaseURI) public onlyOwner {
         baseURI = _newBaseURI;
     }
 
+    // Pause the contract which will stop minting process =======================
     function pause(bool _state) public onlyOwner {
         paused = _state;
     }
 
+    // Add a whitelist user who can mint in presale  =======================
     function whitelistUser(address _user) public onlyOwner {
         whitelisted[_user] = true;
     }
 
+    // Remove a whitelist user from current whitelist list =======================
     function removeWhitelistUser(address _user) public onlyOwner {
         whitelisted[_user] = false;
     }
 
+    // Add a presale user =======================
     function presaleUser(address _user, uint256 _amount) internal {
         presaleWallets[_user] = _amount;
     }
 
+    // Get number of tokens minted by a particular address =======================
     function getMintedCountByPresaledUser(address _user)
         public
         view
@@ -194,6 +231,7 @@ contract StubbornApe is ERC721Enumerable, Ownable {
         return presaleWallets[_user];
     }
 
+    // Remove a presale user from wallet =======================
     function removePresaleUser(address _user, uint256 _amount)
         external
         onlyOwner
@@ -201,6 +239,7 @@ contract StubbornApe is ERC721Enumerable, Ownable {
         presaleWallets[_user] = _amount;
     }
 
+    // Withdraw the balance from samrt contract =======================
     function withdraw() external onlyOwner {
         (bool success, ) = owner().call{value: address(this).balance}("");
         require(success, "Failed to withdraw");
