@@ -1,8 +1,25 @@
 import React, { useEffect, useState } from 'react'
+import Web3 from 'web3';
 
 const MintNFT = ({ accountAddress, contract, presaleCost, publicCost, presaleExpired }) => {
     const [totalMinted, setTotalMinted] = useState(null)
     const [maxSupply, setMaxSupply] = useState(null)
+    const [maxMintAmount, setMaxMintAmount] = useState(null)
+    const [mintAmount, setMintAmount] = useState(0)
+
+
+    const mintApeHandler = async () => {
+        setMintAmount(0)
+        let price
+        if (presaleExpired && mintAmount) {
+            price = Web3.utils.toWei((mintAmount * parseFloat(presaleCost)).toString(), 'ether')
+            console.log(price)
+            await contract.methods
+                .presaleMint()
+                .send({ from: accountAddress, value: price })
+        }
+
+    }
 
     useEffect(() => {
         async function fetchData() {
@@ -16,6 +33,11 @@ const MintNFT = ({ accountAddress, contract, presaleCost, publicCost, presaleExp
                 .MAX_ITEMS()
                 .call();
             setMaxSupply(maxSupply)
+
+            const maxMintAmount = await contract.methods
+                .maxMintAmount()
+                .call();
+            setMaxMintAmount(maxMintAmount)
         }
         fetchData()
     }, [contract])
@@ -31,7 +53,10 @@ const MintNFT = ({ accountAddress, contract, presaleCost, publicCost, presaleExp
                                 <p className='mint-text1 text-center'>{totalMinted}/{maxSupply}</p>}
                         </div>
 
-                        <p className='mint-text2 text-center'>{accountAddress}</p>
+                        <div className='row d-flex justify-content-center'>
+                            <p className='mint-text2 text-center'>{accountAddress}</p>
+                        </div>
+
                         {presaleExpired ? <p className='mint-text3 text-center mt-5'>1 Stubborn Ape is {presaleCost} ETH.</p> :
                             !presaleExpired ? <p className='mint-text3 text-center mt-5'>Presale not active yet</p> :
                                 <p className='mint-text3 text-center mt-5'>{publicCost}</p>}
@@ -39,12 +64,24 @@ const MintNFT = ({ accountAddress, contract, presaleCost, publicCost, presaleExp
                         <p className='mint-text2 text-center'>Excluding gas fees</p>
 
                         <div className='row d-flex justify-content-center'>
-                            {presaleExpired ? <button className='button2 mt-3'>
-                                Mint
-                            </button> :
+                            {presaleExpired ? <div className='d-flex mt-3'>
+                                <button className='button7 mr-5 mt-1' onClick={() => { mintAmount > 0 ? setMintAmount(mintAmount - 1) : console.log('Negative mint amount not allowed') }}>
+                                    <b>-</b>
+                                </button>
+                                <button className='button2' onClick={mintApeHandler}>
+                                    Mint
+                                </button>
+                                <button className='button7 ml-5 mt-1' onClick={() => { mintAmount < maxMintAmount ? setMintAmount(mintAmount + 1) : console.log('Max mint amount per transaction raeched') }}>
+                                    <b>+</b>
+                                </button>
+                            </div> :
                                 <button className='button2 mt-3 opacity-50 border bg-success' disabled>
                                     Mint
                                 </button>}
+                        </div>
+                        <div className='d-flex justify-content-center'>
+                            <p className='text-white mt-3'>Mint Amount:</p>
+                            <p className='text-white ml-2 mt-3'>{mintAmount}</p>
                         </div>
                     </div>
 

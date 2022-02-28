@@ -180,7 +180,7 @@ const AdminScreen = ({ accountAddress, contract }) => {
 
         await contract.methods
             .ownerMint(mintAmount)
-            .send({ from: accountAddress, value: 5000000000000000000 })
+            .send({ from: accountAddress})
     }
 
 

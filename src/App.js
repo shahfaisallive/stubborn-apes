@@ -29,7 +29,7 @@ function App() {
 
   // STATES FOR RELEASE TIMER
   const [saleCounterTime, setSaleCounterTime] = useState(new Date("2022-04-14T17:00:00.000-05:00"))
-  const [presaleExpired, setPresaleExpired] = useState(false)
+  const [presaleExpired, setPresaleExpired] = useState(true)
   const [expiryTime, setExpiryTime] = useState(0)
   const expiryTimestamp = new Date("2022-04-14T17:00:00.000-05:00")
   const exp = expiryTimestamp.setSeconds(expiryTime);

@@ -30,6 +30,9 @@ body{
   color: white;
   background-color:#54A522;
 }
+.button2:hover{
+  background-color: #336912;
+}
 .button3{
   padding:5px 20px 3px 20px;
   border-radius: 10px;
@@ -258,7 +261,7 @@ body{
   padding-top: 160px;
 }
 .mint-box{
-  padding: 60px 80px 60px 80px;
+  padding: 60px 80px 40px 80px;
   border: 2px dashed #54A522;
   border-radius: 15px;
 }
