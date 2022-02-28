@@ -57,7 +57,7 @@ contract StubbornApe is ERC721Enumerable, Ownable {
         );
         require(
             block.timestamp <= publicSaleStartTimestamp,
-            "Current period is not within presale time"
+            "Current period is not within public time"
         );
         uint256 remainder = msg.value % presaleCost;
         uint256 _mintAmount = msg.value / presaleCost;

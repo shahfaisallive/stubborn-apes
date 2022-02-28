@@ -365,7 +365,7 @@ const AdminScreen = ({ accountAddress, contract }) => {
                     <div className='admin-options mt-2'>
                         <div className='d-flex'>
                             <button className='button5' onClick={revealMetadataHandler}>
-                                <b>REVEAL METADATA</b>
+                                <b>{revealed ? 'HIDE METADATA' : 'REVEAL METADATA'}</b>
                             </button>
                         </div>
                     </div>

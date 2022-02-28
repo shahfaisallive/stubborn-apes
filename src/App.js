@@ -26,10 +26,12 @@ function App() {
   const [isOwner, setIsOwner] = useState(false)
   const [publicCost, setPublicCost] = useState(null)
   const [presaleCost, setPresaleCost] = useState(null)
+  const [paused, setPaused] = useState(null)
 
   // STATES FOR RELEASE TIMER
   const [saleCounterTime, setSaleCounterTime] = useState(new Date("2022-04-14T17:00:00.000-05:00"))
-  const [presaleExpired, setPresaleExpired] = useState(true)
+  const [presaleStarted, setPresaleStarted] = useState(false)
+  const [publicSaleStarted, setPublicSaleStarted] = useState(false)
   const [expiryTime, setExpiryTime] = useState(0)
   const expiryTimestamp = new Date("2022-04-14T17:00:00.000-05:00")
   const exp = expiryTimestamp.setSeconds(expiryTime);
@@ -42,7 +44,7 @@ function App() {
   } = useTimer({
     expiryTimestamp: exp, onExpire: () => {
       console.warn('Time expired')
-      setPresaleExpired(true)
+      setPresaleStarted(true)
       // setSaleCounterTime(new Date(2022, 0, 28, 5, 30, 0))
     }
   });
@@ -76,12 +78,8 @@ function App() {
       accountBalance = web3.utils.fromWei(accountBalance, "Ether");
       setAccountBalance(accountBalance);
 
-      // if (accounts[0] === '0x0b7C7Efe2183fEf476b5f86cE53dA612c5dC89b6') {
-      //   setIsOwner(true)
-      // }
-
       const networkId = await web3.eth.net.getId();
-      console.log('network Id:', networkId)
+      // console.log('network Id:', networkId)
       const networkData = StubbornApe.networks[networkId]
       if (networkData) {
         const contract = new web3.eth.Contract(
@@ -99,6 +97,31 @@ function App() {
         if (accounts[0] === owner) {
           setIsOwner(true)
         }
+
+        const paused = await contract.methods
+          .paused()
+          .call();
+        setPaused(paused)
+
+        let timestamp = Math.floor(new Date().getTime() / 1000);
+
+        const presaleTime = await contract.methods
+          .presaleStartTimestamp()
+          .call();
+
+        const publicTime = await contract.methods
+          .publicSaleStartTimestamp()
+          .call();
+
+        if (timestamp > presaleTime && timestamp < publicTime) {
+          setPresaleStarted(true)
+        } else if (timestamp > publicTime) {
+          setPresaleStarted(false)
+          setPublicSaleStarted(true)
+        }
+        console.log(`currentTime: ${timestamp} presaleTime: ${presaleTime} publicTime: ${publicTime}`)
+        console.log('Presale Started:', presaleStarted)
+        console.log('Public Sale Started:', publicSaleStarted)
 
         const presaleCost = await apeContract.methods
           .presaleCost()
@@ -131,7 +154,7 @@ function App() {
       await loadWeb3();
       await loadBlockchainData();
       // console.log(isOwner);
-      console.log('account Address:', accountAddress);
+      // console.log('account Address:', accountAddress);
     }
     fetchData();
   }, [saleCounterTime, metamaskConnected, contractDetected])
@@ -146,7 +169,7 @@ function App() {
           <Route path="/mynfts" element={<MyNFTs />} />
           <Route path="/nftdetail" element={<NFTDetails seconds={seconds} minutes={minutes} hours={hours} days={days} />} />
           <Route path="/team" element={<OurTeam />} />
-          <Route path="/mintnft" element={<MintNFT contract={apeContract} publicCost={publicCost} presaleCost={presaleCost} accountAddress={accountAddress} presaleExpired={presaleExpired} />} />
+          <Route path="/mintnft" element={<MintNFT contract={apeContract} publicCost={publicCost} presaleCost={presaleCost} accountAddress={accountAddress} presaleStarted={presaleStarted} publicSaleStarted={publicSaleStarted} paused={paused} />} />
           {isOwner ? <Route path="/admin" element={<AdminScreen accountAddress={accountAddress} contract={apeContract} />} /> : null}
         </Routes>
         <Footer />
