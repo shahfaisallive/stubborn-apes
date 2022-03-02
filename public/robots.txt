@@ -1,6 +1,5 @@
-Sitemap: https://ibb.co/6nZtYq3
-
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Disallow:
 
+Sitemap: https://stubbornapesociety.com/sitemap.xml

@@ -6,7 +6,7 @@ import { ReactComponent as RedIcon } from '../../media/red.svg'
 import { ReactComponent as EtherIcon } from '../../media/ether.svg'
 import { Link } from 'react-router-dom'
 
-const Aboutus = ({ publicCost, presaleCost }) => {
+const Aboutus = ({ publicCost, presaleCost, contractDetected }) => {
     return (
         <div className='container aboutus-wrapper' id='about'>
             <div className='row'>
@@ -46,14 +46,14 @@ const Aboutus = ({ publicCost, presaleCost }) => {
                 <div className='col-sm-4 justify-content-center d-flex'>
                     <div className='about-stats-div'>
                         <BlueIcon className='traits-icons' />
-                        <p className='traits-text1 text-center'>{presaleCost ? presaleCost : '--'}<EtherIcon className='trait-ether-icon' /></p>
+                        <p className='traits-text1 text-center'>{!contractDetected ? '0.02' : presaleCost ? presaleCost : '--'}<EtherIcon className='trait-ether-icon' /></p>
                         <p className='traits-text2 text-center'>Presale Cost</p>
                     </div>
                 </div>
                 <div className='col-sm-4 justify-content-center d-flex'>
                     <div className='about-stats-div'>
                         <RedIcon className='traits-icons' />
-                        <p className='traits-text1 text-center'>{publicCost ? publicCost : '--'}<EtherIcon className='trait-ether-icon' /></p>
+                        <p className='traits-text1 text-center'>{!contractDetected ? '0.08' : publicCost ? publicCost : '--'}<EtherIcon className='trait-ether-icon' /></p>
                         <p className='traits-text2 text-center'>Public Sale Cost</p>
                     </div>
                 </div>

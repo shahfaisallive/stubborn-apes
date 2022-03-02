@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Web3 from 'web3';
 
-const MintNFT = ({ accountAddress, contract, presaleCost, publicCost, presaleStarted, publicSaleStarted, paused }) => {
+const MintNFT = ({ accountAddress, contract, presaleCost, publicCost, presaleStarted, publicSaleStarted, paused, metamaskConnected, connectToMetamask }) => {
     const [totalMinted, setTotalMinted] = useState(null)
     const [maxSupply, setMaxSupply] = useState(null)
     const [maxMintAmount, setMaxMintAmount] = useState(null)
@@ -53,50 +53,58 @@ const MintNFT = ({ accountAddress, contract, presaleCost, publicCost, presaleSta
             <div className='row container'>
                 <div className='col-md-6 mintnft-left'>
                     <p className='heading1 text-center'>MINT YOUR NFT</p>
-                    <div className='mint-box mt-5'>
-                        <div className='row d-flex justify-content-center'>
-                            {!totalMinted || !maxSupply ? <div className="spinner-border spinner-border mb-4 text-success spinner-loader" role="status" /> :
-                                <p className='mint-text1 text-center'>{totalMinted}/{maxSupply}</p>}
-                        </div>
+                    {metamaskConnected ?
+                        <div className='mint-box mt-5'>
+                            <div className='row d-flex justify-content-center'>
+                                {!totalMinted || !maxSupply ? <div className="spinner-border spinner-border mb-4 text-success spinner-loader" role="status" /> :
+                                    <p className='mint-text1 text-center'>{totalMinted}/{maxSupply}</p>}
+                            </div>
 
-                        <div className='row d-flex justify-content-center'>
-                            <p className='mint-text2 text-center'>{accountAddress}</p>
-                        </div>
+                            <div className='row d-flex justify-content-center'>
+                                <p className='mint-text2 text-center'>{accountAddress}</p>
+                            </div>
 
-                        {paused ? <p className='mint-text3 text-center mt-5'>Minting is Paused</p> :
-                            presaleStarted && !publicSaleStarted ? <p className='mint-text3 text-center mt-5'>1 Stubborn Ape is {presaleCost} ETH.</p> :
-                                publicSaleStarted && !presaleStarted ? <p className='mint-text3 text-center mt-5'>1 Stubborn Ape is {publicCost} ETH.</p> :
-                                    !presaleStarted && !publicSaleStarted ? <p className='mint-text3 text-center mt-5'>Presale not active yet</p>
-                                        : null}
+                            {paused ? <p className='mint-text3 text-center mt-5'>Minting is Paused</p> :
+                                presaleStarted && !publicSaleStarted ? <p className='mint-text3 text-center mt-5'>1 Stubborn Ape is {presaleCost} ETH.</p> :
+                                    publicSaleStarted && !presaleStarted ? <p className='mint-text3 text-center mt-5'>1 Stubborn Ape is {publicCost} ETH.</p> :
+                                        !presaleStarted && !publicSaleStarted ? <p className='mint-text3 text-center mt-5'>Presale not active yet</p>
+                                            : null}
 
-                        {paused ? <p></p> : presaleStarted || publicSaleStarted ? <p className='mint-text2 text-center'>Excluding gas fees</p>
-                            : null}
+                            {paused ? <p></p> : presaleStarted || publicSaleStarted ? <p className='mint-text2 text-center'>Excluding gas fees</p>
+                                : null}
 
 
-                        <div className='row d-flex justify-content-center'>
-                            {paused ? <button className='button2 mt-3 opacity-50 border bg-success' disabled>
-                                Mint
-                            </button> :
-                                presaleStarted || publicSaleStarted ? <div className='d-flex mt-3'>
-                                    <button className='button7 mr-5 mt-1' onClick={() => { mintAmount > 0 ? setMintAmount(mintAmount - 1) : console.log('Negative mint amount not allowed') }}>
-                                        <b>-</b>
-                                    </button>
-                                    <button className='button2' onClick={mintApeHandler}>
-                                        Mint
-                                    </button>
-                                    <button className='button7 ml-5 mt-1' onClick={() => { mintAmount < maxMintAmount ? setMintAmount(mintAmount + 1) : console.log('Max mint amount per transaction raeched') }}>
-                                        <b>+</b>
-                                    </button>
-                                </div> :
-                                    <button className='button2 mt-3 opacity-50 border bg-success' disabled>
-                                        Mint
-                                    </button>}
-                        </div>
-                        <div className='d-flex justify-content-center'>
-                            <p className='text-white mt-3'>Mint Amount:</p>
-                            <p className='text-white ml-2 mt-3'>{mintAmount}</p>
-                        </div>
-                    </div>
+                            <div className='row d-flex justify-content-center'>
+                                {paused ? <button className='button2 mt-3 opacity-50 border bg-success' disabled>
+                                    Mint
+                                </button> :
+                                    presaleStarted || publicSaleStarted ? <div className='d-flex mt-3'>
+                                        <button className='button7 mr-5 mt-1' onClick={() => { mintAmount > 0 ? setMintAmount(mintAmount - 1) : console.log('Negative mint amount not allowed') }}>
+                                            <b>-</b>
+                                        </button>
+                                        <button className='button2' onClick={mintApeHandler}>
+                                            Mint
+                                        </button>
+                                        <button className='button7 ml-5 mt-1' onClick={() => { mintAmount < maxMintAmount ? setMintAmount(mintAmount + 1) : console.log('Max mint amount per transaction raeched') }}>
+                                            <b>+</b>
+                                        </button>
+                                    </div> :
+                                        <button className='button2 mt-3 opacity-50 border bg-success' disabled>
+                                            Mint
+                                        </button>}
+                            </div>
+                            <div className='d-flex justify-content-center'>
+                                <p className='text-white mt-3'>Mint Amount:</p>
+                                <p className='text-white ml-2 mt-3'>{mintAmount}</p>
+                            </div>
+                        </div> : <div className='mint-box mt-5'>
+                            <p className='mint-text3 text-center'>MetaMask is not connected</p>
+                            <div className='row d-flex justify-content-center'>
+                                <button className='connect-btn mb-2' onClick={connectToMetamask}>
+                                    Connect
+                                </button>
+                            </div>
+                        </div>}
 
                     <p className='mint-text4 text-center mt-2 ml-1 mr-1'>Please make sure you are connected to the right network (Ethereum Mainnet) and the correct address.
                         Please note: once you make the purchase, you cannot undo this action. We have set the gas limit to

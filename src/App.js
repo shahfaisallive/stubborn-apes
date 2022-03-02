@@ -165,11 +165,11 @@ function App() {
       <BrowserRouter>
         <Navbar connectToMetamask={connectToMetamask} metamaskConnected={metamaskConnected} accountAddress={accountAddress} isOwner={isOwner} />
         <Routes>
-          <Route path="/" element={<LandingPage seconds={seconds} minutes={minutes} hours={hours} days={days} publicCost={publicCost} presaleCost={presaleCost} />} />
-          <Route path="/mynfts" element={<MyNFTs />} />
+          <Route path="/" element={<LandingPage seconds={seconds} minutes={minutes} hours={hours} days={days} publicCost={publicCost} presaleCost={presaleCost} contractDetected={contractDetected} />} />
+          <Route path="/mynfts" element={<MyNFTs contract={apeContract} accountAddress={accountAddress}/>} />
           <Route path="/nftdetail" element={<NFTDetails seconds={seconds} minutes={minutes} hours={hours} days={days} />} />
           <Route path="/team" element={<OurTeam />} />
-          <Route path="/mintnft" element={<MintNFT contract={apeContract} publicCost={publicCost} presaleCost={presaleCost} accountAddress={accountAddress} presaleStarted={presaleStarted} publicSaleStarted={publicSaleStarted} paused={paused} />} />
+          <Route path="/mintnft" element={<MintNFT contract={apeContract} publicCost={publicCost} presaleCost={presaleCost} accountAddress={accountAddress} presaleStarted={presaleStarted} publicSaleStarted={publicSaleStarted} paused={paused} metamaskConnected={metamaskConnected} connectToMetamask={connectToMetamask} />} />
           {isOwner ? <Route path="/admin" element={<AdminScreen accountAddress={accountAddress} contract={apeContract} />} /> : null}
         </Routes>
         <Footer />
