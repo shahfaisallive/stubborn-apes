@@ -37,10 +37,10 @@ contract StubbornApe is ERC721Enumerable, Ownable {
 
     constructor() ERC721("Stubborn Apes", "STUBS") {
         setBaseURI(
-            "https://gateway.pinata.cloud/ipfs/QmWYUdDwvm2dTpNRU1kbyHizVmZyg9eGpW9W51HbTwD2XK/"
+            "https://gateway.pinata.cloud/ipfs/QmZrjGW6HVnwnSX1dGs5bdcAYGoZh9xDfYPXrs2RtR2Ups/"
         );
         setNotRevealedURI(
-            "https://gateway.pinata.cloud/ipfs/QmT3BqqHE3TmZDp76EtX4WbdHhwE4HgRmYntzzbmGGuJhg"
+            "https://gateway.pinata.cloud/ipfs/QmWuYUPfxr2pi788S3vbtYKYti9YE5AgzYHBgndb5W4FMx"
         );
     }
 

@@ -502,7 +502,7 @@ display: none;
 }
 
 
-/* GALLEYR STYLES */
+/* GALLERY STYLES */
 /* MYNFTS STYLES */
 /* MYNFTS STYLES */
 .mynft-wrapper
@@ -556,7 +556,9 @@ display: none;
 .page-link{
   color: #54A522;
 }
-
+.card-img-top{
+  border-radius: 10px;
+}
 /* NFT DETAILS STYLES */
 /* NFT DETAILS STYLES */
 /* NFT DETAILS STYLES */

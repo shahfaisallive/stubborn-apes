@@ -8,15 +8,45 @@ import { ReactComponent as OpenseaIcon } from '../../media/opensea.svg'
 const NFTGallery = ({ contract, metamaskConnected }) => {
     const [loadingData, setLoadingData] = useState(false)
     const [nftList, setNftList] = useState([])
+    const [revealed, setRevealed] = useState(null)
+    const [baseURI, setBaseURI] = useState('')
+    const [unrevealedURI, setUnrevealedURI] = useState('')
+    const [totalMinted, setTotalMinted] = useState(null)
+
 
     useEffect(() => {
         window.scrollTo(0, 0)
         setLoadingData(true)
 
         async function fetchData() {
-            const owner = await contract.methods
-                .owner()
+            const revealed = await contract.methods
+                .revealed()
                 .call();
+            setRevealed(revealed)
+
+            const baseURI = await contract.methods
+                .baseURI()
+                .call();
+            setBaseURI(baseURI)
+
+            const unrevealedURI = await contract.methods
+                .notRevealedUri()
+                .call();
+            setUnrevealedURI(unrevealedURI)
+
+            const totalMinted = await contract.methods
+                ._mintedItems()
+                .call();
+            setTotalMinted(totalMinted)
+
+            let nftArray = []
+            for (let i = 1; i <= totalMinted; i++) {
+                const metaDataObj = await axios.get(`${!revealed ? unrevealedURI : baseURI + i.toString() + '.json'}`)
+                nftArray.push(metaDataObj.data)
+            }
+
+            setNftList(nftArray)
+            console.log(nftList)
 
             setLoadingData(false)
         }
@@ -40,27 +70,36 @@ const NFTGallery = ({ contract, metamaskConnected }) => {
                     <p className='mynft-text3'>Please connect your Metamask to Ethereum Mainnet to view the Minted NFTs</p>
                 </div> :
                     <div className='row d-flex mt-3'>
-                        <div className='col'>
-                            <div className="card">
-                                <Link to={'/nftdetail'}>
-                                    <img className="card-img-top" src={'/images/red-ape.png'} alt="ape" />
-                                </Link>
-                                <div className="card-body">
-                                    <div className='row d-flex'>
-                                        <p className="card-title">Stubborn Ape</p>
-                                        <p className="nft-price">0.08 <EtherIcon className='ether-icon' /></p>
-                                    </div>
+                        {loadingData ? <div className='col-12 d-flex justify-content-center'>
+                            <div className="spinner-border text-success" role="status">
+                                <span className="sr-only">Loading...</span>
+                            </div>
+                        </div> :
+                            nftList.map((nft, i) => (
+                                <div className='col-3'>
+                                    <div className="card">
+                                        {/* <Link to={'/nftdetail'}> */}
+                                        <img className="card-img-top mt-3" src={nft.image} alt="ape" />
+                                        {/* </Link> */}
+                                        <div className="card-body">
+                                            <div className='row d-flex justify-content-center'>
+                                                <p className="card-title">{nft.name}</p>
+                                                {/* <p className="nft-price">0.08 <EtherIcon className='ether-icon' /></p> */}
+                                            </div>
 
-                                    <div className='row d-flex justify-content-center mt-4'>
-                                        <button className='button3'>
-                                            <OpenseaIcon className='mr-2 mb-1' />
-                                            View on Opensea
-                                        </button>
+                                            <div className='row d-flex justify-content-center mt-2'>
+                                                <a href={`https://testnets.opensea.io/assets/${contract._address}/${i}`} rel="noreferrer" target={'_blank'}>
+                                                <button className='button3'>
+                                                    <OpenseaIcon className='mr-2 mb-1' />
+                                                    View on Opensea
+                                                </button>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
+                            ))
+                        }
                     </div>}
 
 
