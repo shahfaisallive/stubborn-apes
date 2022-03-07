@@ -473,6 +473,11 @@ display: none;
   margin-left: auto;
   margin-right: auto;
 }
+.footer-logo2{
+  width: 220px;
+  margin-left: auto;
+  margin-right: auto;
+}
 .ft-text1{
   font-size: 14px;
   color: #BCBCBC;
@@ -490,13 +495,14 @@ display: none;
 }
 .ft-icon{
   width: 20px;
+  margin-top: -3px;
 }
 #ftMobView{
   display: none !important;
 }
 
 
-/* MYNFTS STYLES */
+/* GALLEYR STYLES */
 /* MYNFTS STYLES */
 /* MYNFTS STYLES */
 .mynft-wrapper
@@ -512,6 +518,11 @@ display: none;
 }
 .mynft-text2{
   font-size: 16px;
+  color: white;
+  font-weight: 500;
+}
+.mynft-text3{
+  font-size: 18px;
   color: white;
   font-weight: 500;
 }

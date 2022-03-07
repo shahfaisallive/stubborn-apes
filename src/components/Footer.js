@@ -1,6 +1,5 @@
 import React from 'react'
 import { ReactComponent as MailIcon } from '../media/mail.svg'
-import { ReactComponent as CallIcon } from '../media/call.svg'
 import { ReactComponent as OpenseaIcon } from '../media/opensea.svg'
 import { ReactComponent as DiscordIcon } from '../media/discord.svg'
 import { ReactComponent as TwitterIcon } from '../media/twitter.svg'
@@ -60,14 +59,18 @@ const Footer = () => {
                             </NavLink>
                         </div>
                     </div>
+                    <div className='row d-flex justify-content-center'>
+                        <a href='https://upcomingnft.art/the-stubborn-ape-society/' target={'_blank'} rel="noreferrer">
+                            <img className='footer-logo2 mt-3' src={'/images/upcoming-nft.png'} alt="ft-logo" />
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <hr style={{ borderStyle: 'solid', borderWidth: '1px' }}></hr>
             <div className='container-fluid row d-flex justify-content-center pr-5 pl-5' id='ftWebView'>
                 <div className='col-4 d-flex'>
-                    <p className='basic-text2'><MailIcon className="ft-icon" />  mintown@gmail.com</p>
-                    <p className='basic-text2 ml-3'><CallIcon className="ft-icon" />  021 3657 3258 15</p>
+                    <p className='basic-text2'><MailIcon className="ft-icon mr-2" />Stubbornapesociety@gmail.com</p>
                 </div>
                 <div className='col-4'>
                     <p className='ft-text1 text-center'>Copyright © 2022 Mintown. All Rights Reserved.</p>
@@ -94,8 +97,7 @@ const Footer = () => {
 
             <div className='container-fluid row justify-content-center pr-5 pl-5' id='ftMobView'>
                 <div className='row justify-content-center'>
-                    <p className='basic-text2'><MailIcon className="ft-icon" />  mintown@gmail.com</p>
-                    <p className='basic-text2 ml-3'><CallIcon className="ft-icon" />  021 3657 3258 15</p>
+                    <p className='basic-text2'><MailIcon className="ft-icon mr-2" />Stubbornapesociety@gmail.com</p>
                 </div>
 
                 <div className='row d-flex justify-content-end'>

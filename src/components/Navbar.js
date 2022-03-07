@@ -63,9 +63,9 @@ const Navbar = ({ connectToMetamask, metamaskConnected, accountAddress, isOwner 
                         <li className="nav-item">
                             <NavLink className="nav-link " to="/"><p className='text_one' onClick={navRoadmapHandler}>Roadmap</p></NavLink>
                         </li>
-                        {metamaskConnected ? <li className="nav-item">
-                            <NavLink className="nav-link " to="/mynfts"><p className='text_one'>My NFTs</p></NavLink>
-                        </li> : null}
+                        <li className="nav-item">
+                            <NavLink className="nav-link " to="/nftgallery"><p className='text_one'>NFT Gallery</p></NavLink>
+                        </li>
                         <li className="nav-item">
                             <NavLink className="nav-link " to="/team"><p className='text_one'>Our Team</p></NavLink>
                         </li>

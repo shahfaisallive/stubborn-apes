@@ -46,7 +46,7 @@ const Aboutus = ({ publicCost, presaleCost, contractDetected }) => {
                 <div className='col-sm-4 justify-content-center d-flex'>
                     <div className='about-stats-div'>
                         <BlueIcon className='traits-icons' />
-                        <p className='traits-text1 text-center'>{!contractDetected ? '0.02' : presaleCost ? presaleCost : '--'}<EtherIcon className='trait-ether-icon' /></p>
+                        <p className='traits-text1 text-center'>{!contractDetected ? '0.06' : presaleCost ? presaleCost : '--'}<EtherIcon className='trait-ether-icon' /></p>
                         <p className='traits-text2 text-center'>Presale Cost</p>
                     </div>
                 </div>

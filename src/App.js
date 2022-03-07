@@ -8,7 +8,7 @@ import StubbornApe from './abis/StubbornApe.json'
 // Importing components
 import Navbar from './components/Navbar';
 import LandingPage from './components/landingpage/LandingPage';
-import MyNFTs from './components/nfts/MyNFTs';
+import NFTGallery from './components/nfts/NFTGallery';
 import NFTDetails from './components/nfts/NFTDetails';
 import OurTeam from './components/OurTeam';
 import Footer from './components/Footer';
@@ -166,7 +166,7 @@ function App() {
         <Navbar connectToMetamask={connectToMetamask} metamaskConnected={metamaskConnected} accountAddress={accountAddress} isOwner={isOwner} />
         <Routes>
           <Route path="/" element={<LandingPage seconds={seconds} minutes={minutes} hours={hours} days={days} publicCost={publicCost} presaleCost={presaleCost} contractDetected={contractDetected} />} />
-          <Route path="/mynfts" element={<MyNFTs contract={apeContract} accountAddress={accountAddress}/>} />
+          <Route path="/nftgallery" element={<NFTGallery contract={apeContract} metamaskConnected={metamaskConnected} />} />
           <Route path="/nftdetail" element={<NFTDetails seconds={seconds} minutes={minutes} hours={hours} days={days} />} />
           <Route path="/team" element={<OurTeam />} />
           <Route path="/mintnft" element={<MintNFT contract={apeContract} publicCost={publicCost} presaleCost={presaleCost} accountAddress={accountAddress} presaleStarted={presaleStarted} publicSaleStarted={publicSaleStarted} paused={paused} metamaskConnected={metamaskConnected} connectToMetamask={connectToMetamask} />} />
