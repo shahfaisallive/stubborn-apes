@@ -80,7 +80,8 @@ function App() {
 
       const networkId = await web3.eth.net.getId();
       // console.log('network Id:', networkId)
-      const networkData = StubbornApe.networks[networkId]
+      const networkData = await StubbornApe.networks[networkId]
+      console.log(networkData)
       if (networkData) {
         const contract = new web3.eth.Contract(
           StubbornApe.abi,

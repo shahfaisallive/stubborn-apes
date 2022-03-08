@@ -4,7 +4,7 @@ const OurTeam = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
-    
+
     return (
         <div className='container-fluid team-wrapper'>
             <div className='container'>
@@ -28,6 +28,14 @@ const OurTeam = () => {
                                 </div>
                                 <div className='row d-flex justify-content-center'>
                                     <p className="team-text2 text-center">Director</p>
+                                </div>
+                                <div className='row d-flex justify-content-center'>
+                                    <a href='https://www.linkedin.com/in/scancoandrew' target={'_blank'} rel="noreferrer" >
+                                        <img src="https://img.icons8.com/plasticine/100/000000/linkedin.png" alt='linkedin icon' className='team-social-icon' />
+                                    </a>
+                                    <a href="#"  target={'_blank'} rel="noreferrer">
+                                        <img src="https://img.icons8.com/plasticine/100/000000/discord-logo.png" alt='discord icon' className='team-social-icon' />
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -57,6 +65,14 @@ const OurTeam = () => {
                                 <div className='row d-flex justify-content-center'>
                                     <p className="team-text2 text-center">Design</p>
                                 </div>
+                                <div className='row d-flex justify-content-center'>
+                                    <a href='https://www.linkedin.com/in/noumanr/' target={'_blank'} rel="noreferrer" >
+                                        <img src="https://img.icons8.com/plasticine/100/000000/linkedin.png" alt='linkedin icon' className='team-social-icon' />
+                                    </a>
+                                    <a href="#"  target={'_blank'} rel="noreferrer">
+                                        <img src="https://img.icons8.com/plasticine/100/000000/discord-logo.png" alt='discord icon' className='team-social-icon' />
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -70,6 +86,14 @@ const OurTeam = () => {
                                 </div>
                                 <div className='row d-flex justify-content-center'>
                                     <p className="team-text2 text-center">Development</p>
+                                </div>
+                                <div className='row d-flex justify-content-center'>
+                                    <a href='https://www.linkedin.com/in/ahmad-ali-360/' target={'_blank'} rel="noreferrer" >
+                                        <img src="https://img.icons8.com/plasticine/100/000000/linkedin.png" alt='linkedin icon' className='team-social-icon' />
+                                    </a>
+                                    <a href="https://discordapp.com/users/242028262727876608"  target={'_blank'} rel="noreferrer">
+                                        <img src="https://img.icons8.com/plasticine/100/000000/discord-logo.png" alt='discord icon' className='team-social-icon' />
+                                    </a>
                                 </div>
                             </div>
                         </div>

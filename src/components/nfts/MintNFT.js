@@ -56,8 +56,7 @@ const MintNFT = ({ accountAddress, contract, presaleCost, publicCost, presaleSta
                     {metamaskConnected ?
                         <div className='mint-box mt-5'>
                             <div className='row d-flex justify-content-center'>
-                                {!totalMinted || !maxSupply ? <div className="spinner-border spinner-border mb-4 text-success spinner-loader" role="status" /> :
-                                    <p className='mint-text1 text-center'>{totalMinted}/{maxSupply}</p>}
+                                <p className='text-center mint-text3'>Account Address</p>
                             </div>
 
                             <div className='row d-flex justify-content-center'>

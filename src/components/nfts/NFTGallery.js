@@ -17,7 +17,6 @@ const NFTGallery = ({ contract, metamaskConnected }) => {
     useEffect(() => {
         window.scrollTo(0, 0)
         setLoadingData(true)
-
         async function fetchData() {
             const revealed = await contract.methods
                 .revealed()
@@ -74,6 +73,8 @@ const NFTGallery = ({ contract, metamaskConnected }) => {
                             <div className="spinner-border text-success" role="status">
                                 <span className="sr-only">Loading...</span>
                             </div>
+                        </div> : nftList.length === 0 ? <div className='col-12 d-flex justify-content-center mt-5'>
+                            <p className='mynft-text3 text-center text-success'>Seems like Stubborn Apes minting is not opened yet</p>
                         </div> :
                             nftList.map((nft, i) => (
                                 <div className='col-3'>
@@ -88,11 +89,11 @@ const NFTGallery = ({ contract, metamaskConnected }) => {
                                             </div>
 
                                             <div className='row d-flex justify-content-center mt-2'>
-                                                <a href={`https://testnets.opensea.io/assets/${contract._address}/${i}`} rel="noreferrer" target={'_blank'}>
-                                                <button className='button3'>
-                                                    <OpenseaIcon className='mr-2 mb-1' />
-                                                    View on Opensea
-                                                </button>
+                                                <a href={`https://testnets.opensea.io/assets/${contract._address}/${i+1}`} rel="noreferrer" target={'_blank'}>
+                                                    <button className='button3'>
+                                                        <OpenseaIcon className='mr-2 mb-1' />
+                                                        View on Opensea
+                                                    </button>
                                                 </a>
                                             </div>
                                         </div>

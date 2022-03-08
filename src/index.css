@@ -640,6 +640,13 @@ display: none;
 .team-img{
   border-radius: 15px;
 }
+.team-social-icon{
+  width: 50px;
+}
+.team-social-icon:hover{
+  width: 50px;
+  opacity: 0.6;
+}
 
 
 
@@ -832,4 +839,9 @@ display: none;
     margin-top: 10px;
     width: 100%;
   }
+
+  .mint-text2{
+    font-size: 10px;
+  }
+
 }

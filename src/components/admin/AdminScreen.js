@@ -17,7 +17,7 @@ const AdminScreen = ({ accountAddress, contract }) => {
     const [symbol, setSymbol] = useState(null)
     const [totalMinted, setTotalMinted] = useState(null)
     const [maxSupply, setMaxSupply] = useState(null)
-    const [balance, setBalance] = useState(null)
+    // const [balance, setBalance] = useState(null)
     const [refresh, setRefresh] = useState(false)
 
 
@@ -102,11 +102,6 @@ const AdminScreen = ({ accountAddress, contract }) => {
                 .call();
             setPublicTime(publicTime)
 
-            const balance = await contract.methods
-                .balanceOf(owner)
-                .call();
-            setBalance(Web3.utils.fromWei(balance, 'ether'))
-
             setLoadingData(false)
         }
         fetchData()
@@ -172,7 +167,7 @@ const AdminScreen = ({ accountAddress, contract }) => {
     const withdrawHandler = async () => {
         await contract.methods
             .withdraw()
-            .call()
+            .send({ from: accountAddress })
     }
 
     const adminMintHandler = async () => {
@@ -180,7 +175,7 @@ const AdminScreen = ({ accountAddress, contract }) => {
 
         await contract.methods
             .ownerMint(mintAmount)
-            .send({ from: accountAddress})
+            .send({ from: accountAddress })
     }
 
 
@@ -370,11 +365,11 @@ const AdminScreen = ({ accountAddress, contract }) => {
                         </div>
                     </div>
 
-                    <div className='d-flex mt-4'>
+                    {/* <div className='d-flex mt-4'>
                         <p className='admin-txt1'>Balance:</p>
                         {loadingData ? <div className="spinner-border spinner-border-sm text-success spinner-loader" role="status" /> :
                             <p className='admin-txt2'>{balance} Ether</p>}
-                    </div>
+                    </div> */}
 
 
                     <div className='admin-options mt-2'>
