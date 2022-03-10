@@ -30,6 +30,7 @@ const AdminScreen = ({ accountAddress, contract }) => {
     const [newPublicTime, setNewPublicTime] = useState()
     const [whitelistAddress, setWhitelistAddress] = useState()
     const [mintAmount, setMintAmount] = useState(0)
+    const [newOwnerAddress, setNewOwnerAddress] = useState('')
 
 
     // GET DATA FROM BLOCKCHAIN
@@ -178,12 +179,17 @@ const AdminScreen = ({ accountAddress, contract }) => {
             .send({ from: accountAddress })
     }
 
+    const transferOwnershipHandler = async () => {
+        await contract.methods
+            .transferOwnership(newOwnerAddress)
+            .send({ from: accountAddress })
+    }
 
     return <div className='container-fluid admin-wrapper'>
         <div className='container'>
             <div className='row d-block justify-content-center mt-5'>
                 <p className='heading1 text-center'>Owner Portal</p>
-                <span className='d-flex justify-content-center'><p className='font-weight-bold text-light'>Owner Address:</p><p className='text-light ml-3'>{owner}</p></span>
+                <span className='justify-content-center owner-address-span'><p className='font-weight-bold text-light text-center '>Owner Address:</p><p className='text-light text-center ml-3'>{owner}</p></span>
             </div>
 
 
@@ -311,7 +317,7 @@ const AdminScreen = ({ accountAddress, contract }) => {
 
                     <div className='d-flex'>
                         <p className='admin-txt1'>Contract:</p>
-                        {contract ? <p className='admin-txt2'>{contract._address}</p> : <p className='admin-txt2'></p>}
+                        {contract ? <p className='admin-txt2 '>{contract._address}</p> : <p className='admin-txt2 '></p>}
                     </div>
 
                     <div className='d-flex'>
@@ -378,6 +384,17 @@ const AdminScreen = ({ accountAddress, contract }) => {
                                 <b>WITHDRAW</b>
                             </button>
                         </div>
+                    </div>
+
+                    <div className='admin-options mt-4'>
+                        <p className='admin-txt1 mt-3'>TRANSFER OWNERSHIP</p>
+                        <div className='d-flex'>
+                            <button className='button5 mt-1' style={{ backgroundColor: 'red' }} onClick={transferOwnershipHandler}>
+                                TRANSFER
+                            </button>
+                        </div>
+                        <input type='text' className='input2 mt-2' placeholder='0xb221C202cF15E088B5DF9C60A19...' value={newOwnerAddress} onChange={(e) => setNewOwnerAddress(e.target.value)} />
+
                     </div>
 
                     <hr className='mt-5 border border-light'></hr>

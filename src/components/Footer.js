@@ -63,6 +63,12 @@ const Footer = () => {
                         <a href='https://upcomingnft.art/the-stubborn-ape-society/' target={'_blank'} rel="noreferrer">
                             <img className='footer-logo2 mt-3' src={'/images/upcoming-nft.png'} alt="ft-logo" />
                         </a>
+                        <a href='https://nettyart.io/etherium-nft-launches/' target={'_blank'} rel="noreferrer">
+                            <img className='footer-logo2 mt-4' src={'/images/nettyart.png'} alt="ft-logo" />
+                        </a>
+                        <a href='https://mintyscore.com/project/fae7b260-132e-43e4-b7a2-9b5c91555ad0/overview' target={'_blank'} rel="noreferrer">
+                            <img className='footer-logo3 mt-3 ml-3' src={'/images/minty.jpeg'} alt="ft-logo" />
+                        </a>
                     </div>
                 </div>
             </div>

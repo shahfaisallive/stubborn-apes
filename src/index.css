@@ -474,9 +474,10 @@ display: none;
   margin-right: auto;
 }
 .footer-logo2{
-  width: 220px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 200px;
+}
+.footer-logo3{
+  width: 120px;
 }
 .ft-text1{
   font-size: 14px;
@@ -650,7 +651,12 @@ display: none;
 
 
 
-/* ADMIN WRAPPER */
+/* ADMIN STYLES */
+/* ADMIN STYLES */
+/* ADMIN STYLES */
+.owner-address-span{
+  display: flex;
+}
 .admin-wrapper{
   background-color: #111111;
   padding-top: 140px;
@@ -681,6 +687,11 @@ display: none;
   color: white;
   font-weight: 700;
 }
+.admin-txt4{
+  font-size: 12px;
+  max-width: 100%;
+  word-wrap: break-word;
+}
 .input1{
   margin-left: 20px;
   border: none;
@@ -691,6 +702,17 @@ display: none;
 .input1::placeholder{
   font-size: 14px;
 }
+.input2{
+  border: none;
+  border-radius: 6px;
+  padding-left: 10px;
+  width: 330px;
+  height: 40px;
+}
+.input2::placeholder{
+  font-size: 14px;
+}
+
 .spinner-loader{
   margin-top: 13px;
   margin-left: 10px;
@@ -844,4 +866,25 @@ display: none;
     font-size: 10px;
   }
 
+  .button5{
+    font-size: 12px;
+  }
+  .input1::placeholder{
+    font-size: 12px;
+  }
+  .button6{
+    margin-top: 20px;
+  }
+  .owner-address-span{
+    display: block;
+  }
+  .owner-address-span p{
+    max-width: 100%;
+    word-wrap: break-word;
+    font-size: 80%;
+  }
+  .admin-txt2{
+    max-width: 80%;
+    word-wrap: break-word;
+  }
 }
