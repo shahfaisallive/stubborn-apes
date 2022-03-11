@@ -476,9 +476,6 @@ display: none;
 .footer-logo2{
   width: 200px;
 }
-.footer-logo3{
-  width: 120px;
-}
 .ft-text1{
   font-size: 14px;
   color: #BCBCBC;
@@ -640,9 +637,33 @@ display: none;
 }
 .team-img{
   border-radius: 15px;
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
 }
 .team-social-icon{
   width: 50px;
+}
+.img-container{
+  position: relative;
+}
+.team-social-div{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transition: .5s ease;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  opacity: 0;
+}
+.img-container:hover .team-img{
+  opacity: 0.3;
+}
+.img-container:hover .team-social-div{
+  opacity: 1;
 }
 .team-social-icon:hover{
   width: 50px;

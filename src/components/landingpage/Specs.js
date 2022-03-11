@@ -1,15 +1,29 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ReactComponent as ArrowIcon } from '../../media/arrow.svg'
 import { Link } from 'react-router-dom'
+import ScrollReveal from 'scrollreveal'
 
 const Specs = () => {
+    const options = {
+        delay: 1,
+        duration: 2000,
+        rotate: {
+            x: 0,
+            y: 200,
+            z: 0,
+        },
+    }
+    useEffect(() => {
+        ScrollReveal().reveal('.scroll-element', options)
+    }, [])
+
     return (
         <div className='container-fluid specs-wrapper justify-content-center d-flex'>
             <div className='row container'>
                 <div className='col-md-6 specs-left justify-content-start d-flex'>
                     <img src={'/images/double-ape.png'} className='specs-img-ape' alt='double-ape' />
                 </div>
-                <div className='col-md-6 specs-right'>
+                <div className='col-md-6 specs-right scroll-element'>
                     <p className='heading1'>Rarity and Specs</p>
                     <p className='basic-text1'>We strive to build the strongest community for our members by creating endless value</p>
 

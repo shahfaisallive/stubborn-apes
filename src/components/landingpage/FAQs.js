@@ -1,7 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Accordion } from 'react-bootstrap'
+import ScrollReveal from 'scrollreveal'
 
 const FAQs = () => {
+    const options = {
+        delay: 1,
+        duration: 2000,
+        rotate: {
+            x: 100,
+            y: 0,
+            z: 0,
+        },
+    }
+    useEffect(() => {
+        ScrollReveal().reveal('.faqs-wrapper', options)
+    }, [])
+
     return (
         <div className='faqs-wrapper container-fluid' id='faqs'>
             <div className='container justify-content-center'>

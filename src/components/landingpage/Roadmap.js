@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import ScrollReveal from 'scrollreveal'
 
 import { ReactComponent as CircleIcon1 } from '../../media/circle1.svg'
 import { ReactComponent as CircleIcon2 } from '../../media/circle2.svg'
@@ -14,6 +15,19 @@ import { ReactComponent as Line3 } from '../../media/line3.svg'
 
 
 const Roadmap = () => {
+    const options = {
+        delay: 1,
+        duration: 2000,
+        rotate: {
+            x: 0,
+            y: 500,
+            z: 0,
+        },
+    }
+    useEffect(() => {
+        ScrollReveal().reveal('.roadmap-single-div', options)
+    }, [])
+
     return (
         <div className='container-fluid roadmap-wrapper justify-content-center d-flex' id='roadmap'>
             <div className='container'>
