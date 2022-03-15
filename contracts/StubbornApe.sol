@@ -12,12 +12,12 @@ contract StubbornApe is ERC721Enumerable, Ownable {
     string public baseURI;
 
     // Costs ====================================
-    uint256 public presaleCost = 0.02 ether;
+    uint256 public presaleCost = 0.06 ether;
     uint256 public publicSaleCost = 0.08 ether;
 
     // Sale dates ===============================
-    uint256 public presaleStartTimestamp = 1649959200; // 14 April 2022 5 PM EST
-    uint256 public publicSaleStartTimestamp = 1650114000; // 16 April 2022 12 PM EST
+    uint256 public presaleStartTimestamp = 1649970000; // 14 April 2022 5 PM EST
+    uint256 public publicSaleStartTimestamp = 1650124800; // 16 April 2022 12 PM EST
 
     // Count values =============================
     uint256 public MAX_ITEMS = 7000;
@@ -35,10 +35,7 @@ contract StubbornApe is ERC721Enumerable, Ownable {
     // Events ===================================
     event PublicSaleMint(address indexed _from, uint256 indexed _tokenId);
 
-    constructor() ERC721("Stubborn Apes", "STUBS") {
-        setBaseURI(
-            "https://gateway.pinata.cloud/ipfs/QmZrjGW6HVnwnSX1dGs5bdcAYGoZh9xDfYPXrs2RtR2Ups/"
-        );
+    constructor() ERC721("The Stubborn Apes Society", "SAS") {
         setNotRevealedURI(
             "https://gateway.pinata.cloud/ipfs/QmWuYUPfxr2pi788S3vbtYKYti9YE5AgzYHBgndb5W4FMx"
         );

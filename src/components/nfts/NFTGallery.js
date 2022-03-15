@@ -8,6 +8,7 @@ import { ReactComponent as OpenseaIcon } from '../../media/opensea.svg'
 const NFTGallery = ({ contract, metamaskConnected }) => {
     const [loadingData, setLoadingData] = useState(false)
     const [nftList, setNftList] = useState([])
+    const [loadingError, setLoadingError] = useState(false)
     const [revealed, setRevealed] = useState(null)
     const [baseURI, setBaseURI] = useState('')
     const [unrevealedURI, setUnrevealedURI] = useState('')
@@ -40,8 +41,14 @@ const NFTGallery = ({ contract, metamaskConnected }) => {
 
             let nftArray = []
             for (let i = 1; i <= totalMinted; i++) {
-                const metaDataObj = await axios.get(`${!revealed ? unrevealedURI : baseURI + i.toString() + '.json'}`)
-                nftArray.push(metaDataObj.data)
+                try {
+                    const metaDataObj = await axios.get(`${!revealed ? unrevealedURI : baseURI + i.toString() + '.json'}`)
+                    nftArray.push(metaDataObj.data)
+                } catch (error) {
+                    console.log(error)
+                    setLoadingData(false)
+                    setLoadingError(true)
+                }
             }
 
             setNftList(nftArray)
@@ -73,6 +80,8 @@ const NFTGallery = ({ contract, metamaskConnected }) => {
                             <div className="spinner-border text-success" role="status">
                                 <span className="sr-only">Loading...</span>
                             </div>
+                        </div> : loadingError ? <div className='col-12 d-flex justify-content-center mt-5'>
+                            <p className='mynft-text3 text-center text-danger'>Oops!! An error occured while fetching NFT Metadata. <br /> Kindly comeback after sometime</p>
                         </div> : nftList.length === 0 ? <div className='col-12 d-flex justify-content-center mt-5'>
                             <p className='mynft-text3 text-center text-success'>Seems like Stubborn Apes minting is not opened yet</p>
                         </div> :
@@ -89,7 +98,7 @@ const NFTGallery = ({ contract, metamaskConnected }) => {
                                             </div>
 
                                             <div className='row d-flex justify-content-center mt-2'>
-                                                <a href={`https://testnets.opensea.io/assets/${contract._address}/${i+1}`} rel="noreferrer" target={'_blank'}>
+                                                <a href={`https://testnets.opensea.io/assets/${contract._address}/${i + 1}`} rel="noreferrer" target={'_blank'}>
                                                     <button className='button3'>
                                                         <OpenseaIcon className='mr-2 mb-1' />
                                                         View on Opensea

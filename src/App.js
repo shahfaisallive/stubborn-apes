@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useTimer } from 'react-timer-hook';
 import Web3 from 'web3';
 import StubbornApe from './abis/StubbornApe.json'
+import ReactGA from 'react-ga';
 
 
 // Importing components
@@ -145,9 +146,15 @@ function App() {
     window.location.reload();
   };
 
+  // GOOGLE ANALYTICS FUNCTION
+  const setGA = () => {
+    ReactGA.initialize('UA-222794996-1');
+    ReactGA.pageview('Init page view');
+  };
 
   // USEEFFECT FUNCTION----->>>
   useEffect(() => {
+    setGA()
     async function fetchData() {
       const currentDate = new Date();
       const currentTime = currentDate.getTime()
