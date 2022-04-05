@@ -58,8 +58,10 @@ const Footer = () => {
                                 <p className='ft-text2' onClick={navFaqHandler}>FAQs</p>
                             </NavLink>
                         </div>
-                    </div>
-                    <div className='row d-flex justify-content-center mt-3'>
+                    </div>        
+                </div>
+            </div>
+            <div className='row d-flex justify-content-center footer-logos-links-div'>
                         <a href='https://upcomingnft.art/the-stubborn-ape-society/' target={'_blank'} rel="noreferrer">
                             <img className='footer-logo2 mt-3 mr-2' src={'/images/upcoming-nft.png'} alt="ft-logo" />
                         </a>
@@ -69,9 +71,10 @@ const Footer = () => {
                         <a href='https://mintyscore.com/project/fae7b260-132e-43e4-b7a2-9b5c91555ad0/overview' target={'_blank'} rel="noreferrer">
                             <img className='footer-logo2 mt-4 ml-4 ' src={'/images/minty.png'} alt="ft-logo" />
                         </a>
+                        <a href='https://www.thenftdaily.co.uk/nft-listings' target={'_blank'} rel="noreferrer">
+                            <img className='footer-logo3 mt-4 ml-4 ' src={'/images/nftdaily.png'} alt="ft-logo" />
+                        </a>
                     </div>
-                </div>
-            </div>
 
             <hr style={{ borderStyle: 'solid', borderWidth: '1px' }}></hr>
             <div className='container-fluid row d-flex justify-content-center pr-5 pl-5' id='ftWebView'>
@@ -93,7 +96,7 @@ const Footer = () => {
                         <a href='http://discord.gg/stubbornapesociety' target={'_blank'} rel="noreferrer">
                             <DiscordIcon className="ft-icon ml-2" />
                         </a>
-                        <a href='http://opensea.io' target={'_blank'} rel="noreferrer">
+                        <a href='https://opensea.io/collection/stubborn-ape-society-official' target={'_blank'} rel="noreferrer">
                             <OpenseaIcon className="ft-icon ml-2" />
                         </a>
                     </div>
@@ -118,7 +121,7 @@ const Footer = () => {
                         <a href='http://discord.gg/stubbornapesociety' target={'_blank'} rel="noreferrer">
                             <DiscordIcon className="ft-icon ml-2" />
                         </a>
-                        <a href='http://opensea.io' target={'_blank'} rel="noreferrer">
+                        <a href='https://opensea.io/collection/stubborn-ape-society-official' target={'_blank'} rel="noreferrer">
                             <OpenseaIcon className="ft-icon ml-2" />
                         </a>
                     </div>

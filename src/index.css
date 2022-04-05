@@ -432,6 +432,9 @@ display: none;
   padding: 20px;
   margin-top: 20px;
 }
+.accordian-btn:active{
+  border: none !important;
+}
 
 .faq-text1{
   font-size: 18px;
@@ -474,7 +477,14 @@ display: none;
   margin-right: auto;
 }
 .footer-logo2{
-  width: 200px;
+  width: 150px;
+}
+.footer-logo3{
+  width: 100px;
+}
+.footer-logos-links-div{
+  align-items: center !important;
+  margin-top: -20px;
 }
 .ft-text1{
   font-size: 14px;

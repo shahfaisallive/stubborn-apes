@@ -97,7 +97,7 @@ const Navbar = ({ connectToMetamask, metamaskConnected, accountAddress, isOwner 
                             <a href='http://discord.gg/stubbornapesociety' target={'_blank'} rel="noreferrer">
                                 <DiscordIcon className='nav-social-icon ml-3' />
                             </a>
-                            <a href='http://opensea.io' target={'_blank'} rel="noreferrer">
+                            <a href='https://opensea.io/collection/stubborn-ape-society-official' target={'_blank'} rel="noreferrer">
                                 <OpenseaIcon className='nav-social-icon ml-3' />
                             </a>
                         </li>

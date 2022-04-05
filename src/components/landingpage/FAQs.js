@@ -25,7 +25,7 @@ const FAQs = () => {
                     <div className='col-md-6'>
                         <Accordion defaultActiveKey="1" >
                             <Accordion.Item eventKey="0" className='faq-single-div'>
-                                <Accordion.Button bsPrefix='faq-text1 d-flex'>How much is a Stubborn Ape?
+                                <Accordion.Button bsPrefix='faq-text1 d-flex' className='accordian-btn'>How much is a Stubborn Ape?
                                     <img src={'/images/dropicon.png'} alt='drop icon' className='drop-icon' />
                                 </Accordion.Button>
                                 <Accordion.Body bsPrefix='faq-text2'>

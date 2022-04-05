@@ -98,7 +98,7 @@ const NFTGallery = ({ contract, metamaskConnected }) => {
                                             </div>
 
                                             <div className='row d-flex justify-content-center mt-2'>
-                                                <a href={`https://testnets.opensea.io/assets/${contract._address}/${i + 1}`} rel="noreferrer" target={'_blank'}>
+                                                <a href={`https://opensea.io/assets/${contract._address}/${i + 1}`} rel="noreferrer" target={'_blank'}>
                                                     <button className='button3'>
                                                         <OpenseaIcon className='mr-2 mb-1' />
                                                         View on Opensea
